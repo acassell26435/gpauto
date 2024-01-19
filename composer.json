@@ -1,27 +1,31 @@
 {
     "name": "laravel/laravel",
     "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": ">=7.0.0",
+        "php": "^7.2|^8.0",
         "barryvdh/laravel-dompdf": "^0.9.0",
-        "fideloper/proxy": "^4.0",
+        "fideloper/proxy": "^4.4",
         "intervention/image": "^2.5",
         "jackiedo/dotenv-editor": "^1.2",
-        "laravel/framework": "5.8.*",
-        "laravel/socialite": "^4.0",
-        "laravel/tinker": "~1.0",
-        "laravelcollective/html": "^5.5",
+        "laravel/framework": "^6.20",
+        "laravel/socialite": "^4.1",
+        "laravel/tinker": "^2.5",
+        "laravelcollective/html": "^6.0",
         "silviolleite/laravelpwa": "^2.0",
-        "spatie/laravel-newsletter": "^4.8"
+        "spatie/laravel-newsletter": "^5.0"
     },
     "require-dev": {
-        "filp/whoops": "*",
-        "fzaninotto/faker": "*",
         "mockery/mockery": "*",
-        "phpunit/phpunit": "*"
+        "phpunit/phpunit": "*",
+        "fakerphp/faker": "*",
+        "facade/ignition": "^1.16.4",
+        "nunomaduro/collision": "^3.0"
     },
     "autoload": {
         "classmap": [
@@ -39,8 +43,7 @@
     },
     "extra": {
         "laravel": {
-            "dont-discover": [
-            ]
+            "dont-discover": []
         }
     },
     "scripts": {
