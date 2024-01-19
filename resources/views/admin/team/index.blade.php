@@ -63,7 +63,7 @@
             <td>{{$team->dob}}</td>
             <td>{{$team->mobile}}</td>
             <td>{{$team->phone ? $team->phone : '-'}}</td>
-            <td>{{str_limit($team->address, 10)}}</td>
+            <td>{{Str::limit($team->address, 10)}}</td>
             <td>{{$team->post}}</td>
             <td>{{$team->status == 'A' ? 'Active' : 'Inactive'}}</td>
             <td>

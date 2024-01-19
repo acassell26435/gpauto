@@ -14,7 +14,7 @@
             <div class="slider-dtl">
               <h4 class="slider-sub-heading">{{$item->heading}}</h4>
               <h1 class="slider-heading">{{$item->sub_heading}}</h1>
-              <p>{{str_limit($item->detail,100,'...')}}</p>
+              <p>{{Str::limit($item->detail,100,'...')}}</p>
               <div class="slider-btn">
                 @if($item->button1 == 1)
                   <a href="{{$item->button1_link}}" class="btn btn-orange">{{$item->button1_text}}</a>
