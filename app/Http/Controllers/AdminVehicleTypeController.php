@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Vehicle_type;
+use Illuminate\Http\Request;
 
 class AdminVehicleTypeController extends Controller
 {
@@ -15,6 +15,7 @@ class AdminVehicleTypeController extends Controller
     public function index()
     {
         $vehicle_types = Vehicle_type::all();
+
         return view('admin.vehicle_type.index', compact('vehicle_types'));
     }
 
@@ -31,7 +32,6 @@ class AdminVehicleTypeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -68,7 +68,6 @@ class AdminVehicleTypeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Washing_plan;
 use App\Washing_plan_include;
+use Illuminate\Http\Request;
 
 class AdminWashingIncludeController extends Controller
 {
@@ -15,7 +14,7 @@ class AdminWashingIncludeController extends Controller
      */
     public function index()
     {
-      //
+        //
     }
 
     /**
@@ -31,7 +30,6 @@ class AdminWashingIncludeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -68,7 +66,6 @@ class AdminWashingIncludeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

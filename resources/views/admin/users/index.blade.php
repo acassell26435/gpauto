@@ -61,7 +61,7 @@
               <td>{{$user->dob}}</td>
               <td>{{$user->mobile}}</td>
               <td>{{$user->phone ? $user->phone : '-'}}</td>
-              <td>{{str_limit($user->address, 10)}}</td>
+              <td>{{Str::limit($user->address, 10)}}</td>
               <td>{{$user->role == 'A' ? 'Administrator' : 'Subscriber'}}</td>
               <td>{{$user->created_at->diffForHumans()}}</td>
               <td>{{$user->updated_at->diffForHumans()}}</td>

@@ -50,7 +50,7 @@
               <td>{{$i++}}</td>
               <td><img src="{{url('/images/slider',$item->image)}}" class="img img-responsive"></td>
               <td>{{$item->heading}}</td>
-              <td>{{str_limit($item->detail,50,'...')}}</td>
+              <td>{{Str::limit($item->detail,50,'...')}}</td>
               <td>{{$item->created_at}}</td>
               <td><a href="{{route('slider.edit', $item->id)}}" class="btn btn-sm btn-info">Edit</a></td>
               <td>

@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Team;
 use App\Social_team;
+use Illuminate\Http\Request;
 
 class AdminTeamSocialController extends Controller
 {
@@ -31,7 +30,6 @@ class AdminTeamSocialController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -45,6 +43,7 @@ class AdminTeamSocialController extends Controller
         return back()->with('added', 'Team Social added');
 
     }
+
     /**
      * Display the specified resource.
      *
@@ -70,7 +69,6 @@ class AdminTeamSocialController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

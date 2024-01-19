@@ -103,7 +103,7 @@
               <td><img width="50px" height="50px" src="{{asset('images/testimonial')}}/{{$testimonial->image}}" class="img-responsive" alt=""></td>
               <td>{{$testimonial->name}}</td>
               <td>{{$testimonial->post}}</td>
-              <td title="{{$testimonial->detail}}">{{str_limit($testimonial->detail, 50)}}</td>
+              <td title="{{$testimonial->detail}}">{{Str::limit($testimonial->detail, 50)}}</td>
               <td>{{$testimonial->created_at->diffForHumans()}}</td>
               <td>{{$testimonial->updated_at->diffForHumans()}}</td>
               <td>

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Gallery;
+use Illuminate\Http\Request;
 
 class AdminGalleryController extends Controller
 {
@@ -32,21 +32,20 @@ class AdminGalleryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
 
         $request->validate([
-          'gallery_img' => 'image|mimes:jpeg,png,jpg',
+            'gallery_img' => 'image|mimes:jpeg,png,jpg',
         ]);
 
         $input = $request->all();
 
         $file = $request->file('gallery_img');
 
-        $name = time() . $file->getClientOriginalName();
+        $name = time().$file->getClientOriginalName();
 
         $file->move('images/gallery', $name);
 
@@ -82,7 +81,6 @@ class AdminGalleryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -90,7 +88,7 @@ class AdminGalleryController extends Controller
     {
 
         $request->validate([
-          'gallery_img' => 'image|mimes:jpeg,png,jpg',
+            'gallery_img' => 'image|mimes:jpeg,png,jpg',
         ]);
 
         $gallery = Gallery::findOrFail($id);
@@ -99,11 +97,11 @@ class AdminGalleryController extends Controller
 
         $file = $request->file('gallery_img');
 
-        $name = time() . $file->getClientOriginalName();
+        $name = time().$file->getClientOriginalName();
 
         $file->move('images/gallery', $name);
 
-        unlink(public_path() . "/images/gallery/" . $gallery->gallery_img);
+        unlink(public_path().'/images/gallery/'.$gallery->gallery_img);
 
         $input['gallery_img'] = $name;
 
@@ -123,7 +121,7 @@ class AdminGalleryController extends Controller
     {
         $gallery = Gallery::findOrFail($id);
 
-        unlink(public_path() . "/images/gallery/" . $gallery->gallery_img);
+        unlink(public_path().'/images/gallery/'.$gallery->gallery_img);
 
         $gallery->delete();
 

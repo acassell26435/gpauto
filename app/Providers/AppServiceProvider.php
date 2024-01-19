@@ -2,11 +2,11 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Schema;
 use App\Contact;
-use Auth;
 use App\SocialLogin;
+use Auth;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,10 +15,10 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-     public function boot()
-     {
-       Schema::defaultStringLength(191);
-     }
+    public function boot()
+    {
+        Schema::defaultStringLength(191);
+    }
 
     /**
      * Register any application services.
@@ -27,13 +27,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        view()->composer('*', function ($view)
-        {           
-           
+        view()->composer('*', function ($view) {
+
             $contact = Contact::first();
             $social_login = SocialLogin::first();
             $auth = Auth::user();
-            $view->with(['auth' => $auth, 'contact' => $contact,'social_login'=>$social_login]);
+            $view->with(['auth' => $auth, 'contact' => $contact, 'social_login' => $social_login]);
         });
     }
 }

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Blog;
 use App\User;
+use Illuminate\Http\Request;
 
 class AdminBlogController extends Controller
 {
@@ -34,31 +34,30 @@ class AdminBlogController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
 
-      $request->validate([
-        'img' => 'image|mimes:jpeg,png,jpg',
-      ]);
+        $request->validate([
+            'img' => 'image|mimes:jpeg,png,jpg',
+        ]);
 
-      $input = $request->all();
+        $input = $request->all();
 
-      if ($file = $request->file('img')) {
+        if ($file = $request->file('img')) {
 
-        $name = time() . $file->getClientOriginalName();
+            $name = time().$file->getClientOriginalName();
 
-        $file->move('images/blog', $name);
+            $file->move('images/blog', $name);
 
-        $input['img'] = $name;
+            $input['img'] = $name;
 
-      }
+        }
 
-      Blog::create($input);
+        Blog::create($input);
 
-      return back()->with('added', 'Blog has been added');
+        return back()->with('added', 'Blog has been added');
     }
 
     /**
@@ -86,35 +85,34 @@ class AdminBlogController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-      $request->validate([
-        'img' => 'image|mimes:jpeg,png,jpg',
-      ]);
+        $request->validate([
+            'img' => 'image|mimes:jpeg,png,jpg',
+        ]);
 
-      $blog = Blog::findOrFail($id);
+        $blog = Blog::findOrFail($id);
 
-      $input = $request->all();
+        $input = $request->all();
 
-      if ($file = $request->file('img')) {
+        if ($file = $request->file('img')) {
 
-        $name = time() . $file->getClientOriginalName();
+            $name = time().$file->getClientOriginalName();
 
-        $file->move('images/blog', $name);
+            $file->move('images/blog', $name);
 
-        unlink(public_path() . "/images/blog/" . $blog->img);
+            unlink(public_path().'/images/blog/'.$blog->img);
 
-        $input['img'] = $name;
+            $input['img'] = $name;
 
-      }
+        }
 
-      $blog->update($input);
+        $blog->update($input);
 
-      return back()->with('updated', 'Blog has been updated');
+        return back()->with('updated', 'Blog has been updated');
     }
 
     /**
@@ -125,16 +123,16 @@ class AdminBlogController extends Controller
      */
     public function destroy($id)
     {
-      $blog = Blog::findOrFail($id);
+        $blog = Blog::findOrFail($id);
 
-      if ($blog->img) {
+        if ($blog->img) {
 
-        unlink(public_path() . "/images/blog/" . $blog->img);
+            unlink(public_path().'/images/blog/'.$blog->img);
 
-      }
+        }
 
-      $blog->delete();
+        $blog->delete();
 
-      return back()->with('deleted', 'Blog has been deleted');
+        return back()->with('deleted', 'Blog has been deleted');
     }
 }

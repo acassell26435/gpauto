@@ -102,9 +102,9 @@
                 @php($i++)
               </td>
               <td>{{$blog->users->name}}</td>
-              <td title="{{$blog->title}}">{{str_limit($blog->title, 25)}}</td>
+              <td title="{{$blog->title}}">{{Str::limit($blog->title, 25)}}</td>
               <td>{{$blog->date}}</td>
-              <td title="{{$blog->dtl}}">{{str_limit($blog->dtl, 45)}}</td>
+              <td title="{{$blog->dtl}}">{{Str::limit($blog->dtl, 45)}}</td>
               <td>{{$blog->created_at->diffForHumans()}}</td>
               <td>{{$blog->updated_at->diffForHumans()}}</td>
               <td>

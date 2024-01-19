@@ -9,40 +9,40 @@ return [
         'background_color' => '#ffffff',
         'theme_color' => '#000000',
         'display' => 'standalone',
-        'orientation'=> 'any',
-        'status_bar'=> 'black',
+        'orientation' => 'any',
+        'status_bar' => 'black',
         'icons' => [
             '72x72' => [
                 'path' => env('APP_URL').'/images/icons/icon-72x72.png',
-                'purpose' => 'any'
+                'purpose' => 'any',
             ],
             '96x96' => [
                 'path' => env('APP_URL').'/images/icons/icon-96x96.png',
-                'purpose' => 'any'
+                'purpose' => 'any',
             ],
             '128x128' => [
                 'path' => env('APP_URL').'/images/icons/icon-128x128.png',
-                'purpose' => 'any'
+                'purpose' => 'any',
             ],
             '144x144' => [
                 'path' => env('APP_URL').'/images/icons/icon-144x144.png',
-                'purpose' => 'any'
+                'purpose' => 'any',
             ],
             '152x152' => [
                 'path' => env('APP_URL').'/images/icons/icon-152x152.png',
-                'purpose' => 'any'
+                'purpose' => 'any',
             ],
             '192x192' => [
                 'path' => env('APP_URL').'/images/icons/icon-192x192.png',
-                'purpose' => 'any'
+                'purpose' => 'any',
             ],
             '384x384' => [
                 'path' => env('APP_URL').'/images/icons/icon-384x384.png',
-                'purpose' => 'any'
+                'purpose' => 'any',
             ],
             '512x512' => [
                 'path' => env('APP_URL').'/images/icons/icon-512x512.png',
-                'purpose' => 'any'
+                'purpose' => 'any',
             ],
         ],
         'splash' => [
@@ -57,6 +57,6 @@ return [
             '1668x2388' => env('APP_URL').'/images/icons/splash-1668x2388.png',
             '2048x2732' => env('APP_URL').'/images/icons/splash-2048x2732.png',
         ],
-        'custom' => []
-    ]
+        'custom' => [],
+    ],
 ];

@@ -93,7 +93,7 @@
               </td>
               <td> <img height="50px" width="50px" class="img-responsive" src="{{asset('images/services')}}/{{$service->icon}}" alt=""></td>
               <td>{{$service->name}}</td>
-              <td title="{{$service->description}}">{{str_limit($service->description, 50)}}</td>
+              <td title="{{$service->description}}">{{Str::limit($service->description, 50)}}</td>
               <td>
                 <!-- Modal -->
                 <a type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#{{$service->id}}serviceEditModal">Edit</a>

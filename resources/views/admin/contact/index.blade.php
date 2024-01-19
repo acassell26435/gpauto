@@ -55,7 +55,7 @@
                   <img src="{{asset('/images/logo')}}/{{$contacts->logo_two}}" class="img-responsive" alt="logo_two">
                 @endif
               </td>
-              <td title="{{$contact->c_name}}">{{str_limit($contacts->c_name, 20)}}</td>
+              <td title="{{$contact->c_name}}">{{Str::limit($contacts->c_name, 20)}}</td>
               <td>{{$contacts->mobile}}</td>
               <td>{{$contacts->phone}}</td>
               <td>{{$contacts->address}}</td>

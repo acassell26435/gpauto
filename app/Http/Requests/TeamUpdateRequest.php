@@ -24,14 +24,14 @@ class TeamUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-          'name'      => 'required',
-          'email'     => 'required',
-          'mobile'    => 'required',
-          'dob'       => 'required|before:1995/01/01',
-          'address'   => 'required',
-          'post'      => 'required',
-          'status'    => 'required',
-          'photo'     => 'image|mimes:jpeg,png,jpg',
+            'name' => 'required',
+            'email' => 'required',
+            'mobile' => 'required',
+            'dob' => 'required|before:1995/01/01',
+            'address' => 'required',
+            'post' => 'required',
+            'status' => 'required',
+            'photo' => 'image|mimes:jpeg,png,jpg',
         ];
     }
 }

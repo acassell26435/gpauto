@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Appointment_user;
-use App\Washing_price;
 use App\Payment_mode;
+use App\Washing_price;
+use Illuminate\Http\Request;
 
 class AdminPaymentController extends Controller
 {
@@ -16,11 +16,11 @@ class AdminPaymentController extends Controller
      */
     public function index()
     {
-      $payments = Appointment_user::all();
-      $washing_prices = Washing_price::all();
-      $payment_mode_lists = Payment_mode::pluck('mode', 'id')->all();
+        $payments = Appointment_user::all();
+        $washing_prices = Washing_price::all();
+        $payment_mode_lists = Payment_mode::pluck('mode', 'id')->all();
 
-      return view('admin.payment.index', compact('payments', 'washing_prices', 'payment_mode_lists'));
+        return view('admin.payment.index', compact('payments', 'washing_prices', 'payment_mode_lists'));
     }
 
     /**
@@ -36,7 +36,6 @@ class AdminPaymentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -69,7 +68,6 @@ class AdminPaymentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

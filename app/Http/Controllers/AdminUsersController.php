@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\UsersCreateRequest;
 use App\Http\Requests\UsersUpdateRequest;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Auth;
 use App\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class AdminUsersController extends Controller
 {
@@ -16,23 +15,22 @@ class AdminUsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function index()
+    {
+        if (Auth::user()->role == 'A') {
 
-       public function index()
-       {
-           if (Auth::user()->role == 'A') {
+            $users = User::where('id', '!=', Auth::id())->get();
 
-               $users = User::where('id', '!=', Auth::id())->get();
-               return view('admin.users.index', compact('users'));
+            return view('admin.users.index', compact('users'));
 
-           }
+        }
 
-            if (Auth::user()->role == 'S') {
+        if (Auth::user()->role == 'S') {
 
-               return redirect('/admin');
+            return redirect('/admin');
 
-            }
-       }
-
+        }
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -41,17 +39,17 @@ class AdminUsersController extends Controller
      */
     public function create()
     {
-      if (Auth::user()->role == 'A') {
+        if (Auth::user()->role == 'A') {
 
-        return view('admin.users.create');
+            return view('admin.users.create');
 
-      }
+        }
 
-      if (Auth::user()->role == 'S') {
+        if (Auth::user()->role == 'S') {
 
-        return redirect('/admin');
+            return redirect('/admin');
 
-      }
+        }
 
     }
 
@@ -68,17 +66,17 @@ class AdminUsersController extends Controller
 
         if ($file = $request->file('photo')) {
 
-          $name = time() . $file->getClientOriginalName();
+            $name = time().$file->getClientOriginalName();
 
-          $file->move('images/users', $name);
+            $file->move('images/users', $name);
 
-          $input['photo'] = $name;
+            $input['photo'] = $name;
 
         }
 
         $input['password'] = bcrypt($request->password);
 
-        $input['dob'] = date("Y/m/d", strtotime($request->dob));
+        $input['dob'] = date('Y/m/d', strtotime($request->dob));
 
         User::create($input);
 
@@ -106,6 +104,7 @@ class AdminUsersController extends Controller
     {
         //
         $user = User::findOrFail($id);
+
         return view('admin.users.edit', compact('user'));
 
     }
@@ -124,35 +123,34 @@ class AdminUsersController extends Controller
 
         if ($request->password == '') {
 
-          $input = $request->except('password');
+            $input = $request->except('password');
 
-        }
-        else {
-          $input = $request->all();
+        } else {
+            $input = $request->all();
         }
 
         if ($file = $request->file('photo')) {
 
-          $name = time() . $file->getClientOriginalName();
+            $name = time().$file->getClientOriginalName();
 
-          $file->move('images/users', $name);
+            $file->move('images/users', $name);
 
-          if ($user->photo) {
+            if ($user->photo) {
 
-            unlink(public_path() . "/images/users/" . $user->photo);
+                unlink(public_path().'/images/users/'.$user->photo);
 
-          }
+            }
 
-          $input['photo'] = $name;
-
-        }
-
-        if (!$request->password == '') {
-
-          $input['password'] = bcrypt($request->password);
+            $input['photo'] = $name;
 
         }
-        $input['dob'] = date("Y/m/d", strtotime($request->dob));
+
+        if (! $request->password == '') {
+
+            $input['password'] = bcrypt($request->password);
+
+        }
+        $input['dob'] = date('Y/m/d', strtotime($request->dob));
 
         $user->update($input);
 
@@ -172,7 +170,7 @@ class AdminUsersController extends Controller
 
         if ($user->photo) {
 
-          unlink(public_path() . "/images/users/" . $user->photo);
+            unlink(public_path().'/images/users/'.$user->photo);
 
         }
 

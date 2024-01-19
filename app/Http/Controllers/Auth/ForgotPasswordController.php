@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Contact;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
-use App\Contact;
 
 class ForgotPasswordController extends Controller
 {
@@ -19,9 +19,11 @@ class ForgotPasswordController extends Controller
     |
     */
 
-    public function showResetPassword(){
-      $contacts = Contact::all();
-      return view('auth.passwords.email', compact('contacts'));
+    public function showResetPassword()
+    {
+        $contacts = Contact::all();
+
+        return view('auth.passwords.email', compact('contacts'));
     }
 
     use SendsPasswordResetEmails;
@@ -31,10 +33,8 @@ class ForgotPasswordController extends Controller
      *
      * @return void
      */
-
     public function __construct()
     {
         $this->middleware('guest');
     }
-
 }
