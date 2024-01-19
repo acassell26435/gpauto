@@ -14,6 +14,6 @@ class Washing_plan_include extends Model
 
     public function washing_plan()
     {
-        return $this->belongsTo('App\Washing_plan');
+        return $this->belongsTo(\App\Washing_plan::class);
     }
 }

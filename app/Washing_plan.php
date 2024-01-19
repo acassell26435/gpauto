@@ -13,16 +13,16 @@ class Washing_plan extends Model
 
     public function washing_include()
     {
-        return $this->hasOne('App\Washing_plan_include');
+        return $this->hasOne(\App\Washing_plan_include::class);
     }
 
     public function washing_price()
     {
-        return $this->hasOne('App\Washing_price');
+        return $this->hasOne(\App\Washing_price::class);
     }
 
     public function appointment()
     {
-        return $this->hasOne('App\Appointment');
+        return $this->hasOne(\App\Appointment::class);
     }
 }

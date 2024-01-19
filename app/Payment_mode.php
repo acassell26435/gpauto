@@ -12,6 +12,6 @@ class Payment_mode extends Model
 
     public function appointment_user()
     {
-        return $this->hasOne('App\Appointment_user');
+        return $this->hasOne(\App\Appointment_user::class);
     }
 }

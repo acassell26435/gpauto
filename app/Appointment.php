@@ -22,32 +22,32 @@ class Appointment extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo(\App\User::class);
     }
 
     public function vehicle_company()
     {
-        return $this->belongsTo('App\Vehicle_company');
+        return $this->belongsTo(\App\Vehicle_company::class);
     }
 
     public function vehicle_modal()
     {
-        return $this->belongsTo('App\Vehicle_modal');
+        return $this->belongsTo(\App\Vehicle_modal::class);
     }
 
     public function vehicle_type()
     {
-        return $this->belongsTo('App\Vehicle_type', 'vehicle_types_id');
+        return $this->belongsTo(\App\Vehicle_type::class, 'vehicle_types_id');
     }
 
     public function washing_plan()
     {
-        return $this->belongsTo('App\Washing_plan');
+        return $this->belongsTo(\App\Washing_plan::class);
     }
 
     public function status()
     {
-        return $this->belongsTo('App\Status');
+        return $this->belongsTo(\App\Status::class);
     }
 
     public function payment()

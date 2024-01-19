@@ -16,6 +16,6 @@ class Social_team extends Model
 
     public function teams()
     {
-        return $this->belongsTo('App\Team', 'team_id');
+        return $this->belongsTo(\App\Team::class, 'team_id');
     }
 }

@@ -15,11 +15,11 @@ class Washing_price extends Model
 
     public function washing_plan()
     {
-        return $this->belongsTo('App\Washing_plan');
+        return $this->belongsTo(\App\Washing_plan::class);
     }
 
     public function vehicle_type()
     {
-        return $this->belongsTo('App\Vehicle_type');
+        return $this->belongsTo(\App\Vehicle_type::class);
     }
 }
