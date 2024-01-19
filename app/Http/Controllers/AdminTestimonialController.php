@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Testimonial;
+use Illuminate\Http\Request;
 
 class AdminTestimonialController extends Controller
 {
@@ -15,6 +15,7 @@ class AdminTestimonialController extends Controller
     public function index()
     {
         $testimonials = Testimonial::all();
+
         return view('admin.testimonial.index', compact('testimonials'));
     }
 
@@ -31,24 +32,23 @@ class AdminTestimonialController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $request->validate([
-          'image' => 'image|mimes:jpeg,png,jpg',
+            'image' => 'image|mimes:jpeg,png,jpg',
         ]);
 
         $input = $request->all();
 
         if ($file = $request->file('image')) {
 
-          $name = time() . $file->getClientOriginalName();
+            $name = time().$file->getClientOriginalName();
 
-          $file->move('images/testimonial', $name);
+            $file->move('images/testimonial', $name);
 
-          $input['image'] = $name;
+            $input['image'] = $name;
 
         }
 
@@ -82,14 +82,13 @@ class AdminTestimonialController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $request->validate([
-          'image' => 'image|mimes:jpeg,png,jpg',
+            'image' => 'image|mimes:jpeg,png,jpg',
         ]);
 
         $input = $request->all();
@@ -98,13 +97,13 @@ class AdminTestimonialController extends Controller
 
         if ($file = $request->file('image')) {
 
-          $name = time() . $file->getClientOriginalName();
+            $name = time().$file->getClientOriginalName();
 
-          $file->move('images/testimonial', $name);
+            $file->move('images/testimonial', $name);
 
-          unlink(public_path() . "/images/testimonial/" . $testimonial->image);
+            unlink(public_path().'/images/testimonial/'.$testimonial->image);
 
-          $input['image'] = $name;
+            $input['image'] = $name;
 
         }
 
@@ -125,7 +124,7 @@ class AdminTestimonialController extends Controller
 
         if ($testimonial->image) {
 
-          unlink(public_path() . "/images/testimonial/" . $testimonial->image);
+            unlink(public_path().'/images/testimonial/'.$testimonial->image);
 
         }
 

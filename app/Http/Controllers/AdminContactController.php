@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Contact;
 use DotenvEditor;
+use Illuminate\Http\Request;
 
 class AdminContactController extends Controller
 {
@@ -16,6 +16,7 @@ class AdminContactController extends Controller
     public function index()
     {
         $contacts = Contact::first();
+
         return view('admin.contact.index', compact('contacts'));
     }
 
@@ -32,14 +33,13 @@ class AdminContactController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $request->validate([
-          'logo' => 'image|mimes:jpeg,png,jpg',
-          'logo_two' => 'image|mimes:jpeg,png,jpg',
+            'logo' => 'image|mimes:jpeg,png,jpg',
+            'logo_two' => 'image|mimes:jpeg,png,jpg',
         ]);
 
         $input = $request->all();
@@ -81,21 +81,21 @@ class AdminContactController extends Controller
     public function edit()
     {
         $contacts = Contact::first();
+
         return view('admin.contact.index', compact('contacts'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $request->validate([
-          'logo' => 'image|mimes:jpeg,png,jpg',
-          'logo_two' => 'image|mimes:jpeg,png,jpg',
+            'logo' => 'image|mimes:jpeg,png,jpg',
+            'logo_two' => 'image|mimes:jpeg,png,jpg',
         ]);
 
         $contact = Contact::findOrFail($id);
@@ -104,29 +104,26 @@ class AdminContactController extends Controller
 
         if ($file = $request->file('logo')) {
 
-          $name = $file->getClientOriginalName();
+            $name = $file->getClientOriginalName();
 
-          unlink(public_path(). '/images/logo/' . $contact->logo);
+            unlink(public_path().'/images/logo/'.$contact->logo);
 
-          $file->move('images/logo', $name);
+            $file->move('images/logo', $name);
 
-           $input['logo'] = $name;
+            $input['logo'] = $name;
 
         }
 
         if ($file2 = $request->file('logo_two')) {
 
-          $name2 = $file2->getClientOriginalName();
+            $name2 = $file2->getClientOriginalName();
 
-          unlink(public_path(). '/images/logo/' . $contact->logo_two);
+            unlink(public_path().'/images/logo/'.$contact->logo_two);
 
-          $file2->move('images/logo', $name2);
-             $input['logo_two'] = $name2;
+            $file2->move('images/logo', $name2);
+            $input['logo_two'] = $name2;
 
         }
-
-       
-     
 
         $input['inspect'] = isset($request->inspect) ? 1 : 0;
         $input['rightclick'] = isset($request->rightclick) ? 1 : 0;
@@ -154,28 +151,31 @@ class AdminContactController extends Controller
     {
         $contact = Contact::findOrFail($id);
 
-        unlink(public_path() . '/images/logo/' . $contact->logo);
+        unlink(public_path().'/images/logo/'.$contact->logo);
 
         $contact->delete();
 
         return back()->with('deleted', 'Record Has Been Deleted');
     }
 
-    public function mail_setting(){
+    public function mail_setting()
+    {
         $env_files = [
-                        'MAIL_FROM_NAME' => env('MAIL_FROM_NAME'),
-                        'MAIL_FROM_ADDRESS' => env('MAIL_FROM_ADDRESS'),
-                        'MAIL_DRIVER' => env('MAIL_DRIVER'),
-                        'MAIL_HOST' => env('MAIL_HOST'),
-                        'MAIL_PORT' => env('MAIL_PORT'),
-                        'MAIL_USERNAME' => env('MAIL_USERNAME'),
-                        'MAIL_PASSWORD' => env('MAIL_PASSWORD'),
-                        'MAIL_ENCRYPTION' => env('MAIL_ENCRYPTION'),
-                        ];
-        return view('admin.contact.mailsetting',compact('env_files'));
+            'MAIL_FROM_NAME' => env('MAIL_FROM_NAME'),
+            'MAIL_FROM_ADDRESS' => env('MAIL_FROM_ADDRESS'),
+            'MAIL_DRIVER' => env('MAIL_DRIVER'),
+            'MAIL_HOST' => env('MAIL_HOST'),
+            'MAIL_PORT' => env('MAIL_PORT'),
+            'MAIL_USERNAME' => env('MAIL_USERNAME'),
+            'MAIL_PASSWORD' => env('MAIL_PASSWORD'),
+            'MAIL_ENCRYPTION' => env('MAIL_ENCRYPTION'),
+        ];
+
+        return view('admin.contact.mailsetting', compact('env_files'));
     }
 
-    public function store_mail_setting(Request $request){
+    public function store_mail_setting(Request $request)
+    {
 
         $input = $request->all();
         $env_update = DotenvEditor::setKeys([
@@ -189,25 +189,26 @@ class AdminContactController extends Controller
             'MAIL_ENCRYPTION' => $request->MAIL_ENCRYPTION,
         ]);
         $env_update->save();
-         if ($env_update) {
+        if ($env_update) {
             return back()->with('updated', 'Mail settings has been saved');
         } else {
             return back()->with('deleted', 'Mail settings could not be saved');
         }
 
-       
     }
 
-
-     public function mailchimp_setting(){
+    public function mailchimp_setting()
+    {
         $env_files = [
-                        'MAILCHIMP_API_KEY' => env('MAILCHIMP_API_KEY'),
-                        'MAILCHIMP_LIST_ID' => env('MAILCHIMP_LIST_ID'),
-                        ];
-        return view('admin.contact.mailchimp',compact('env_files'));
+            'MAILCHIMP_API_KEY' => env('MAILCHIMP_API_KEY'),
+            'MAILCHIMP_LIST_ID' => env('MAILCHIMP_LIST_ID'),
+        ];
+
+        return view('admin.contact.mailchimp', compact('env_files'));
     }
 
-    public function store_mailchimp_setting(Request $request){
+    public function store_mailchimp_setting(Request $request)
+    {
 
         $input = $request->all();
         $env_update = DotenvEditor::setKeys([
@@ -216,16 +217,11 @@ class AdminContactController extends Controller
         ]);
         $env_update->save();
 
-         if ($env_update) {
+        if ($env_update) {
             return back()->with('updated', 'Mail settings has been saved');
         } else {
             return back()->with('deleted', 'Mail settings could not be saved');
         }
 
-       
     }
-    
-
-   
-
 }

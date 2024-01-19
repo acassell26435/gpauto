@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Vehicle_company;
 use App\Vehicle_modal;
+use Illuminate\Http\Request;
 
 class AdminVehicleModalController extends Controller
 {
@@ -16,11 +16,11 @@ class AdminVehicleModalController extends Controller
     public function index()
     {
 
-      $vehicle_companies = Vehicle_company::pluck('vehicle_company', 'id')->all();
+        $vehicle_companies = Vehicle_company::pluck('vehicle_company', 'id')->all();
 
-      $vehicle_modals = Vehicle_modal::all();
+        $vehicle_modals = Vehicle_modal::all();
 
-      return view('admin.vehicle_modal.index', compact('vehicle_companies', 'vehicle_modals'));
+        return view('admin.vehicle_modal.index', compact('vehicle_companies', 'vehicle_modals'));
 
     }
 
@@ -37,7 +37,6 @@ class AdminVehicleModalController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -74,7 +73,6 @@ class AdminVehicleModalController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

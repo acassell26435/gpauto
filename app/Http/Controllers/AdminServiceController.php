@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Service;
+use Illuminate\Http\Request;
 
 class AdminServiceController extends Controller
 {
@@ -16,6 +16,7 @@ class AdminServiceController extends Controller
     {
         //
         $services = Service::all();
+
         return view('admin.services.index', compact('services'));
     }
 
@@ -33,25 +34,24 @@ class AdminServiceController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
 
         $request->validate([
-          'icon' => 'image|mimes:jpeg,png,jpg',
+            'icon' => 'image|mimes:jpeg,png,jpg',
         ]);
 
         $input = $request->all();
 
         if ($file = $request->file('icon')) {
 
-          $name = time() . $file->getClientOriginalName();
+            $name = time().$file->getClientOriginalName();
 
-          $file->move('images/services', $name);
+            $file->move('images/services', $name);
 
-          $input['icon'] = $name;
+            $input['icon'] = $name;
 
         }
 
@@ -85,7 +85,6 @@ class AdminServiceController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -93,7 +92,7 @@ class AdminServiceController extends Controller
     {
 
         $request->validate([
-          'icon' => 'image|mimes:jpeg,png,jpg',
+            'icon' => 'image|mimes:jpeg,png,jpg',
         ]);
 
         $service = Service::findOrFail($id);
@@ -102,13 +101,13 @@ class AdminServiceController extends Controller
 
         if ($file = $request->file('icon')) {
 
-          $name = time() . $file->getClientOriginalName();
+            $name = time().$file->getClientOriginalName();
 
-          $file->move('images/services', $name);
+            $file->move('images/services', $name);
 
-          unlink(public_path() . "images/services/" . $name);
+            unlink(public_path().'images/services/'.$name);
 
-          $input['icon'] = $name;
+            $input['icon'] = $name;
 
         }
 
@@ -130,7 +129,7 @@ class AdminServiceController extends Controller
 
         if ($service->icon) {
 
-          unlink(public_path() . "/images/services/" . $service->icon);
+            unlink(public_path().'/images/services/'.$service->icon);
 
         }
 

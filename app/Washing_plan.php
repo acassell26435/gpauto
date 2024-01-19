@@ -8,18 +8,21 @@ class Washing_plan extends Model
 {
     //
     protected $fillable = [
-      'name',
+        'name',
     ];
 
-    public function washing_include(){
-      return $this->hasOne('App\Washing_plan_include');
+    public function washing_include()
+    {
+        return $this->hasOne('App\Washing_plan_include');
     }
 
-    public function washing_price(){
-      return $this->hasOne('App\Washing_price');
+    public function washing_price()
+    {
+        return $this->hasOne('App\Washing_price');
     }
 
-    public function appointment() {
-      return $this->hasOne('App\Appointment');
+    public function appointment()
+    {
+        return $this->hasOne('App\Appointment');
     }
 }

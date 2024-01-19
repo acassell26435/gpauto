@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Facts extends Model
 {
     protected $fillable = [
-      'icon',
-      'number',
-      'detail',
+        'icon',
+        'number',
+        'detail',
     ];
 }

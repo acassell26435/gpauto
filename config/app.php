@@ -121,7 +121,6 @@ return [
     |
     */
 
-
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
@@ -173,7 +172,6 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-       
 
     ],
 
@@ -234,7 +232,7 @@ return [
             'DB_DATABASE',
             'DB_PASSWORD',
             'MAIL_USERNAME',
-            'MAIL_PASSWORD'
+            'MAIL_PASSWORD',
         ],
         '_SERVER' => [
             'APP_KEY',
@@ -242,7 +240,7 @@ return [
             'DB_DATABASE',
             'DB_PASSWORD',
             'MAIL_USERNAME',
-            'MAIL_PASSWORD'
+            'MAIL_PASSWORD',
         ],
     ],
 

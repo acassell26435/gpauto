@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\TeamCreateRequest;
 use App\Http\Requests\TeamUpdateRequest;
-use Illuminate\Support\Facades\Session;
-use App\Team;
 use App\Social_team;
+use App\Team;
+use Illuminate\Support\Facades\Session;
 
 class AdminTeamController extends Controller
 {
@@ -32,7 +31,7 @@ class AdminTeamController extends Controller
      */
     public function create()
     {
-      return view('admin.team.create');
+        return view('admin.team.create');
     }
 
     /**
@@ -48,16 +47,16 @@ class AdminTeamController extends Controller
 
         if ($file = $request->file('photo')) {
 
-          $name = time() . $file->getClientOriginalName();
+            $name = time().$file->getClientOriginalName();
 
-          $file->move('images/Teams', $name);
+            $file->move('images/Teams', $name);
 
-          $input['photo'] = $name;
+            $input['photo'] = $name;
 
         }
 
-        $input['dob'] = date("Y/m/d", strtotime($request->dob));
-        $input['join_date'] = date("Y/m/d", strtotime($request->join_date));
+        $input['dob'] = date('Y/m/d', strtotime($request->dob));
+        $input['join_date'] = date('Y/m/d', strtotime($request->join_date));
 
         Team::create($input);
 
@@ -86,6 +85,7 @@ class AdminTeamController extends Controller
         //
 
         $team = Team::findOrFail($id);
+
         return view('admin.team.edit', compact('team'));
     }
 
@@ -105,22 +105,22 @@ class AdminTeamController extends Controller
 
         if ($file = $request->file('photo')) {
 
-          $name = time() . $file->getClientOriginalName();
+            $name = time().$file->getClientOriginalName();
 
-          $file->move('images/teams', $name);
+            $file->move('images/teams', $name);
 
-          if ($team->photo) {
+            if ($team->photo) {
 
-            unlink(public_path() . "/images/teams/" . $team->photo);
+                unlink(public_path().'/images/teams/'.$team->photo);
 
-          }
+            }
 
-          $input['photo'] = $name;
+            $input['photo'] = $name;
 
         }
 
-        $input['dob'] = date("Y/m/d", strtotime($request->dob));
-        $input['join_date'] = date("Y/m/d", strtotime($request->join_date));
+        $input['dob'] = date('Y/m/d', strtotime($request->dob));
+        $input['join_date'] = date('Y/m/d', strtotime($request->join_date));
 
         $team->update($input);
 
@@ -140,7 +140,7 @@ class AdminTeamController extends Controller
 
         if ($team->photo) {
 
-          unlink(public_path() . "/images/teams/" . $team->photo);
+            unlink(public_path().'/images/teams/'.$team->photo);
 
         }
 

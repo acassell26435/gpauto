@@ -2,8 +2,8 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
@@ -15,7 +15,6 @@ class User extends Authenticatable
      *
      * @var array
      */
-
     protected $fillable = [
         'name', 'email', 'password', 'photo', 'sex', 'dob', 'mobile', 'phone', 'address', 'role',
     ];
@@ -29,53 +28,58 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function team_task() {
-      return $this->hasOne('App\Team_task');
+    public function team_task()
+    {
+        return $this->hasOne('App\Team_task');
     }
 
-    public function blogs() {
-      return $this->hasOne('App\Blog');
+    public function blogs()
+    {
+        return $this->hasOne('App\Blog');
     }
 
-    public function appointment() {
-      return $this->belongsToMany('App\Appointment', 'appointment_users');
+    public function appointment()
+    {
+        return $this->belongsToMany('App\Appointment', 'appointment_users');
     }
 
-    public function is_admin(){
+    public function is_admin()
+    {
 
-      if (Auth::check()) {
+        if (Auth::check()) {
 
-        $user = Auth::user();
+            $user = Auth::user();
 
-        if ($user->role == 'A') {
+            if ($user->role == 'A') {
 
-          return true;
+                return true;
+
+            }
+
+            return false;
 
         }
 
         return false;
-
-      }
-
-      return false;
     }
 
-    public function is_common(){
+    public function is_common()
+    {
 
-      if (Auth::check()) {
+        if (Auth::check()) {
 
-        $user = Auth::user();
+            $user = Auth::user();
 
-        if ($user->role == 'S' OR $user->role == 'A') {
+            if ($user->role == 'S' or $user->role == 'A') {
 
-          return true;
+                return true;
+
+            }
+
+            return false;
 
         }
 
         return false;
-
-      }
-
-      return false;
     }
 }

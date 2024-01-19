@@ -7,15 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class Vehicle_company extends Model
 {
     protected $fillable = [
-      'vehicle_company',
+        'vehicle_company',
     ];
 
-    public function vehicle_modal(){
-      return $this->hasOne('App\Vehicle_modal');
+    public function vehicle_modal()
+    {
+        return $this->hasOne('App\Vehicle_modal');
     }
 
-    public function appointment() {
-      return $this->hasOne('App\Appointment');
+    public function appointment()
+    {
+        return $this->hasOne('App\Appointment');
     }
-
 }

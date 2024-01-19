@@ -25,16 +25,16 @@ class TeamCreateRequest extends FormRequest
     {
         return [
             //
-            'name'      => 'required',
-            'email'     => 'required|unique:teams',
-            'sex'       => 'required',
-            'mobile'    => 'required|unique:teams',
-            'dob'       => 'required|before:1995/01/01',
-            'address'   => 'required',
-            'post'      => 'required',
-            'status'    => 'required',
+            'name' => 'required',
+            'email' => 'required|unique:teams',
+            'sex' => 'required',
+            'mobile' => 'required|unique:teams',
+            'dob' => 'required|before:1995/01/01',
+            'address' => 'required',
+            'post' => 'required',
+            'status' => 'required',
             'join_date' => 'required',
-            'photo'     => 'image|mimes:jpeg,png,jpg',
+            'photo' => 'image|mimes:jpeg,png,jpg',
         ];
     }
 }

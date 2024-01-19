@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Opening_hour;
+use Illuminate\Http\Request;
 
 class AdminOpeningHoursController extends Controller
 {
@@ -32,16 +32,15 @@ class AdminOpeningHoursController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         if ($request->opening_time == '' && $request->closing_time == '') {
 
-          Opening_hour::create(['day'=>$request->day, 'opening_time'=>'-', 'closing_time'=>'-']);
+            Opening_hour::create(['day' => $request->day, 'opening_time' => '-', 'closing_time' => '-']);
 
-          return back()->with('added', 'Opening Hours added');
+            return back()->with('added', 'Opening Hours added');
 
         }
 
@@ -77,7 +76,6 @@ class AdminOpeningHoursController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -87,9 +85,9 @@ class AdminOpeningHoursController extends Controller
 
         if ($request->opening_time == '' && $request->closing_time == '') {
 
-          $time->update(['day'=>$request->day, 'opening_time'=>'-', 'closing_time'=>'-']);
+            $time->update(['day' => $request->day, 'opening_time' => '-', 'closing_time' => '-']);
 
-           return back()->with('updated', 'Opening Hours added');
+            return back()->with('updated', 'Opening Hours added');
 
         }
 

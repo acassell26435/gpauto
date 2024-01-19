@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Contact;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
-use App\Contact;
 
 class ResetPasswordController extends Controller
 {
@@ -38,8 +38,10 @@ class ResetPasswordController extends Controller
         $this->middleware('guest');
     }
 
-    public function showResetForm($token){
-      $contacts = Contact::all();
-      return view('auth.passwords.reset', compact('token', 'contacts'));
+    public function showResetForm($token)
+    {
+        $contacts = Contact::all();
+
+        return view('auth.passwords.reset', compact('token', 'contacts'));
     }
 }

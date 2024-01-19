@@ -25,13 +25,13 @@ class UsersUpdateRequest extends FormRequest
     {
         return [
             //
-            'name'      => 'required',
-            'email'     => 'required',
-            'sex'       => 'required',
-            'dob'       => 'required|before:1995/01/01',
-            'mobile'    => 'required',
-            'address'   => 'required',
-            'photo'     => 'image|mimes:jpeg,png,jpg',
+            'name' => 'required',
+            'email' => 'required',
+            'sex' => 'required',
+            'dob' => 'required|before:1995/01/01',
+            'mobile' => 'required',
+            'address' => 'required',
+            'photo' => 'image|mimes:jpeg,png,jpg',
         ];
     }
 }

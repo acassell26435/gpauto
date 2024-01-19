@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Contact;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use App\Contact;
 
 class LoginController extends Controller
 {
@@ -38,8 +38,10 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function getLogin(){
+    public function getLogin()
+    {
         $contacts = Contact::all();
+
         return view('auth.login', compact('contacts'));
     }
 }

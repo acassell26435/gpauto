@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Payment_mode extends Model
 {
     protected $fillable = [
-      'mode',
+        'mode',
     ];
 
-    public function appointment_user(){
-      return $this->hasOne('App\Appointment_user');
+    public function appointment_user()
+    {
+        return $this->hasOne('App\Appointment_user');
     }
 }

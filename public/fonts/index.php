@@ -1,3 +1,3 @@
-<?php 
-     ( " < h1 > ACCESS DENIED < h1 > " );
-?>
+<?php
+
+(' < h1 > ACCESS DENIED < h1 > ');
