@@ -1,8 +1,5 @@
 <?php
 
-use App\Models\Company_social;
-use App\Models\Contact;
-use App\Models\Gallery;
 use App\Http\Controllers\AdminAppointmentController;
 use App\Http\Controllers\AdminBlogController;
 use App\Http\Controllers\AdminClientsController;
@@ -36,6 +33,9 @@ use App\Http\Controllers\HomeSliderController;
 use App\Http\Controllers\MailChimpController;
 use App\Http\Controllers\PWAController;
 use App\Http\Controllers\SocialLoginController;
+use App\Models\Company_social;
+use App\Models\Contact;
+use App\Models\Gallery;
 use App\Models\Opening_hour;
 use App\Models\Service;
 use App\Models\Social_team;
