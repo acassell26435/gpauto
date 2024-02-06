@@ -61,9 +61,6 @@
     },
     "config": {
         "github.com": "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",
-        "preferred-install": "dist",
-        "sort-packages": true,
-        "optimize-autoloader": true
     },
     "minimum-stability": "stable",
     "prefer-stable": true
