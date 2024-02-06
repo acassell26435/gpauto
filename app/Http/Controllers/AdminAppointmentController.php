@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
 use App\Models\Appointment;
 use App\Models\Status;
 use App\Models\User;
@@ -12,6 +11,7 @@ use App\Models\Vehicle_type;
 use App\Models\Washing_plan;
 use App\Models\Washing_price;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use Mail;
 use PDF;
 

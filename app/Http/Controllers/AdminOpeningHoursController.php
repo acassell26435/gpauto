@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
 use App\Models\Opening_hour;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class AdminOpeningHoursController extends Controller
 {

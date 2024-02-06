@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
 use App\Models\Company_social;
 use App\Models\Contact;
 use App\Models\Opening_hour;
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use Mail;
 
 class contactMailController extends Controller

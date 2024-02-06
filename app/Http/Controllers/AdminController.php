@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
 use App\Models\Appointment;
 use App\Models\Blog;
 use App\Models\Service;
@@ -11,6 +10,7 @@ use App\Models\Team_task;
 use App\Models\Testimonial;
 use App\Models\User;
 use App\Models\Washing_plan;
+use Illuminate\View\View;
 
 class AdminController extends Controller
 {

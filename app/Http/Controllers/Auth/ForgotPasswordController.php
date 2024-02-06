@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+use Illuminate\View\View;
 
 class ForgotPasswordController extends Controller
 {

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
 use App\Models\HomeSection;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class HomeSectionController extends Controller
 {

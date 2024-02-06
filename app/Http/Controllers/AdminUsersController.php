@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\UsersCreateRequest;
 use App\Http\Requests\UsersUpdateRequest;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\View\View;
 
 class AdminUsersController extends Controller
 {

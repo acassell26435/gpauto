@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
 use App\Models\Appointment_user;
 use App\Models\Payment_mode;
 use App\Models\Washing_price;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class AdminPaymentController extends Controller
 {

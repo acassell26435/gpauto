@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\View\View;
 
 class RegisterController extends Controller
 {

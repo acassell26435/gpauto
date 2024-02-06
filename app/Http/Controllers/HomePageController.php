@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
 use App\Models\Appointment;
 use App\Models\Blog;
 use App\Models\Clients;
@@ -26,6 +25,7 @@ use App\Models\Washing_plan_include;
 use App\Models\Washing_price;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class HomePageController extends Controller
 {

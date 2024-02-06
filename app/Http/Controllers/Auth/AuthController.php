@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Auth;
+use Illuminate\Http\RedirectResponse;
 use Socialite;
 
 class AuthController extends Controller

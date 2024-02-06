@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\TeamCreateRequest;
 use App\Http\Requests\TeamUpdateRequest;
 use App\Models\Social_team;
 use App\Models\Team;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Session;
+use Illuminate\View\View;
 
 class AdminTeamController extends Controller
 {
