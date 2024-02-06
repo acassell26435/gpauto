@@ -37,13 +37,3 @@ jobs:
         tools: php-cs-fixer, phpunit:${{ matrix.phpunit-versions }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
-        
-    - name: Install dependencies
-      run: composer update
-
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: 16
-        cache: 'npm'
-    - run: npm install
