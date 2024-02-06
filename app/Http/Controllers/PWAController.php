@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use DotenvEditor;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use Image;
 
 /*==========================================
@@ -15,7 +16,7 @@ Author URI: https://mediacity.co.in
 
 class PWAController extends Controller
 {
-    public function index()
+    public function index(): View
     {
 
         return view('admin.pwa.index');

@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Newsletter;
 
 class MailChimpController extends Controller
 {
-    public function subscribe(Request $request)
+    public function subscribe(Request $request): RedirectResponse
     {
         $this->validate($request, [
             'email' => 'required|email',

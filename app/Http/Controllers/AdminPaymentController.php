@@ -6,15 +6,14 @@ use App\Models\Appointment_user;
 use App\Models\Payment_mode;
 use App\Models\Washing_price;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class AdminPaymentController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         $payments = Appointment_user::all();
         $washing_prices = Washing_price::all();
@@ -46,10 +45,9 @@ class AdminPaymentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(int $id)
     {
         //
     }
@@ -57,10 +55,9 @@ class AdminPaymentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(int $id)
     {
         //
     }
@@ -68,10 +65,9 @@ class AdminPaymentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id)
     {
         $payment = Appointment_user::findOrFail($id);
 
@@ -85,10 +81,9 @@ class AdminPaymentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
         $payment = Appointment_user::findOrFail($id);
 

@@ -6,15 +6,14 @@ use App\Models\Vehicle_type;
 use App\Models\Washing_plan;
 use App\Models\Washing_price;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class AdminWashingPriceController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         $washing_plans = Washing_plan::pluck('name', 'id')->all();
         $vehicle_types = Vehicle_type::pluck('type', 'id')->all();
@@ -51,10 +50,9 @@ class AdminWashingPriceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(int $id)
     {
         //
     }
@@ -62,10 +60,9 @@ class AdminWashingPriceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(int $id)
     {
         //
     }
@@ -73,10 +70,9 @@ class AdminWashingPriceController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id)
     {
         $washing_price = Washing_price::findOrFail($id);
 
@@ -90,10 +86,9 @@ class AdminWashingPriceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
         $washing_price = Washing_price::findOrFail($id);
 

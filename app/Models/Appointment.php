@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Appointment extends Model
 {
@@ -20,37 +22,37 @@ class Appointment extends Model
         'remark',
     ];
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(\App\Models\User::class);
     }
 
-    public function vehicle_company()
+    public function vehicle_company(): BelongsTo
     {
         return $this->belongsTo(\App\Models\Vehicle_company::class);
     }
 
-    public function vehicle_modal()
+    public function vehicle_modal(): BelongsTo
     {
         return $this->belongsTo(\App\Models\Vehicle_modal::class);
     }
 
-    public function vehicle_type()
+    public function vehicle_type(): BelongsTo
     {
         return $this->belongsTo(\App\Models\Vehicle_type::class, 'vehicle_types_id');
     }
 
-    public function washing_plan()
+    public function washing_plan(): BelongsTo
     {
         return $this->belongsTo(\App\Models\Washing_plan::class);
     }
 
-    public function status()
+    public function status(): BelongsTo
     {
         return $this->belongsTo(\App\Models\Status::class);
     }
 
-    public function payment()
+    public function payment(): HasOne
     {
         return $this->hasOne('App\Payment');
     }

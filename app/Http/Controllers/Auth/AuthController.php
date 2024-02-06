@@ -5,16 +5,15 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Auth;
+use Illuminate\Http\RedirectResponse;
 use Socialite;
 
 class AuthController extends Controller
 {
     /**
      * Redirect the user to the OAuth Provider.
-     *
-     * @return Response
      */
-    public function redirectToProvider($provider)
+    public function redirectToProvider($provider): Response
     {
         return Socialite::driver($provider)->redirect();
     }
@@ -24,10 +23,8 @@ class AuthController extends Controller
      * database by looking up their provider_id in the database.
      * If the user exists, log them in. Otherwise, create a new user then log them in. After that
      * redirect them to the authenticated users homepage.
-     *
-     * @return Response
      */
-    public function handleProviderCallback($provider)
+    public function handleProviderCallback($provider): RedirectResponse
     {
 
         try {
@@ -50,9 +47,8 @@ class AuthController extends Controller
      *
      * @param    $user Socialite user object
      * @param $provider Social auth provider
-     * @return  User
      */
-    public function findOrCreateUser($user, $provider)
+    public function findOrCreateUser($user, $provider): User
     {
         if ($user->email == null) {
             $user->email = $user->id.'@facebook.com';

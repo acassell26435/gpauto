@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Vehicle_company extends Model
 {
@@ -10,12 +11,12 @@ class Vehicle_company extends Model
         'vehicle_company',
     ];
 
-    public function vehicle_modal()
+    public function vehicle_modal(): HasOne
     {
         return $this->hasOne(\App\Models\Vehicle_modal::class);
     }
 
-    public function appointment()
+    public function appointment(): HasOne
     {
         return $this->hasOne(\App\Models\Appointment::class);
     }

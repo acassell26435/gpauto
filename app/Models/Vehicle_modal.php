@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Vehicle_modal extends Model
 {
@@ -11,12 +13,12 @@ class Vehicle_modal extends Model
         'vehicle_modal',
     ];
 
-    public function vehicle_company()
+    public function vehicle_company(): BelongsTo
     {
         return $this->belongsTo(\App\Models\Vehicle_company::class);
     }
 
-    public function appointment()
+    public function appointment(): HasOne
     {
         return $this->hasOne(\App\Models\Appointment::class);
     }

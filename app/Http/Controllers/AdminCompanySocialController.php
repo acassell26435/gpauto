@@ -4,15 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Company_social;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class AdminCompanySocialController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         $socials = Company_social::all();
 
@@ -46,10 +45,9 @@ class AdminCompanySocialController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(int $id)
     {
         //
     }
@@ -57,10 +55,9 @@ class AdminCompanySocialController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(int $id)
     {
         //
     }
@@ -68,10 +65,9 @@ class AdminCompanySocialController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id)
     {
         $social = Company_social::findOrFail($id);
 
@@ -85,10 +81,9 @@ class AdminCompanySocialController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
         $social = Company_social::findOrFail($id);
 

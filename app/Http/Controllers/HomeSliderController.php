@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\HomeSlider;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class HomeSliderController extends Controller
 {
@@ -17,7 +18,7 @@ class HomeSliderController extends Controller
         $this->sliders = HomeSlider::query();
     }
 
-    public function index()
+    public function index(): View
     {
         $sliders = $this->sliders->get();
 
@@ -26,10 +27,8 @@ class HomeSliderController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(): View
     {
         return view('admin.slider.create');
     }
@@ -100,9 +99,8 @@ class HomeSliderController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\HomeSlider  $homeSlider
-     * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id): View
     {
         $slider = $this->sliders->find($id);
 

@@ -11,6 +11,7 @@ use App\Models\Vehicle_type;
 use App\Models\Washing_plan;
 use App\Models\Washing_price;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use Mail;
 use PDF;
 
@@ -18,10 +19,8 @@ class AdminAppointmentController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
 
         $users = User::pluck('name', 'id')->all();
@@ -106,10 +105,9 @@ class AdminAppointmentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(int $id)
     {
         //
     }
@@ -117,10 +115,9 @@ class AdminAppointmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(int $id)
     {
         //
     }
@@ -128,10 +125,9 @@ class AdminAppointmentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id)
     {
         $appointment = Appointment::findOrFail($id);
 
@@ -147,10 +143,9 @@ class AdminAppointmentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
         $appointment = Appointment::findOrFail($id);
 
@@ -159,7 +154,7 @@ class AdminAppointmentController extends Controller
         return back()->with('deleted', 'Appointment Has Been Deleted');
     }
 
-    public function report(Request $request)
+    public function report(Request $request): View
     {
 
         return view('admin.report');

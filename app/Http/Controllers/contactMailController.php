@@ -7,11 +7,12 @@ use App\Models\Contact;
 use App\Models\Opening_hour;
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use Mail;
 
 class contactMailController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $company_socials = Company_social::all();
         $services = Service::all();

@@ -10,10 +10,11 @@ use App\Models\Team_task;
 use App\Models\Testimonial;
 use App\Models\User;
 use App\Models\Washing_plan;
+use Illuminate\View\View;
 
 class AdminController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $users = User::orderBy('created_at', 'desc')->get();
         $u_count = User::count();

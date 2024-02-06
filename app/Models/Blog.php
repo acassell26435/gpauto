@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Blog extends Model
 {
@@ -18,7 +19,7 @@ class Blog extends Model
         'dtl',
     ];
 
-    public function users()
+    public function users(): BelongsTo
     {
         return $this->belongsTo(\App\Models\User::class, 'user_id');
     }

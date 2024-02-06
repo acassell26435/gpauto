@@ -7,15 +7,14 @@ use App\Models\Team;
 use App\Models\Team_task;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class AdminTeamTaskController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         $users = User::pluck('name', 'id')->all();
         $teams = Team::pluck('name', 'id')->all();
@@ -52,10 +51,9 @@ class AdminTeamTaskController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(int $id)
     {
         //
     }
@@ -63,10 +61,9 @@ class AdminTeamTaskController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(int $id)
     {
         //
     }
@@ -74,10 +71,9 @@ class AdminTeamTaskController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id)
     {
         $task = Team_task::findOrFail($id);
 
@@ -91,10 +87,9 @@ class AdminTeamTaskController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
         $task = Team_task::findOrFail($id);
 

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\Contact;
 use App\Http\Controllers\Controller;
+use App\Models\Contact;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+use Illuminate\View\View;
 
 class ForgotPasswordController extends Controller
 {
@@ -19,7 +20,7 @@ class ForgotPasswordController extends Controller
     |
     */
 
-    public function showResetPassword()
+    public function showResetPassword(): View
     {
         $contacts = Contact::all();
 
