@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\HomeSlider;
+use App\Models\HomeSlider;
 use Illuminate\Http\Request;
 
 class HomeSliderController extends Controller
@@ -99,7 +99,7 @@ class HomeSliderController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\HomeSlider  $homeSlider
+     * @param  \App\Models\HomeSlider  $homeSlider
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -112,7 +112,7 @@ class HomeSliderController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\HomeSlider  $homeSlider
+     * @param  \App\Models\HomeSlider  $homeSlider
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -181,7 +181,7 @@ class HomeSliderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\HomeSlider  $homeSlider
+     * @param  \App\Models\HomeSlider  $homeSlider
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

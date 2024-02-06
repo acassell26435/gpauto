@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Status;
-use App\Team;
-use App\Team_task;
-use App\User;
+use App\Models\Status;
+use App\Models\Team;
+use App\Models\Team_task;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminTeamTaskController extends Controller

@@ -1,15 +1,14 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Service extends Model
+class Facts extends Model
 {
-    //
     protected $fillable = [
-        'name',
-        'description',
         'icon',
+        'number',
+        'detail',
     ];
 }

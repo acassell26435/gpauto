@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Clients;
+use App\Models\Clients;
 use Illuminate\Http\Request;
 
 class AdminClientsController extends Controller

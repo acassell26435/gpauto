@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,11 +12,11 @@ class Vehicle_company extends Model
 
     public function vehicle_modal()
     {
-        return $this->hasOne(\App\Vehicle_modal::class);
+        return $this->hasOne(\App\Models\Vehicle_modal::class);
     }
 
     public function appointment()
     {
-        return $this->hasOne(\App\Appointment::class);
+        return $this->hasOne(\App\Models\Appointment::class);
     }
 }

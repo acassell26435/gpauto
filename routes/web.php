@@ -1,8 +1,8 @@
 <?php
 
-use App\Company_social;
-use App\Contact;
-use App\Gallery;
+use App\Models\Company_social;
+use App\Models\Contact;
+use App\Models\Gallery;
 use App\Http\Controllers\AdminAppointmentController;
 use App\Http\Controllers\AdminBlogController;
 use App\Http\Controllers\AdminClientsController;
@@ -36,14 +36,14 @@ use App\Http\Controllers\HomeSliderController;
 use App\Http\Controllers\MailChimpController;
 use App\Http\Controllers\PWAController;
 use App\Http\Controllers\SocialLoginController;
-use App\Opening_hour;
-use App\Service;
-use App\Social_team;
-use App\Team;
-use App\Vehicle_type;
-use App\Washing_plan;
-use App\Washing_plan_include;
-use App\Washing_price;
+use App\Models\Opening_hour;
+use App\Models\Service;
+use App\Models\Social_team;
+use App\Models\Team;
+use App\Models\Vehicle_type;
+use App\Models\Washing_plan;
+use App\Models\Washing_plan_include;
+use App\Models\Washing_price;
 use Illuminate\Support\Facades\Route;
 
 /*

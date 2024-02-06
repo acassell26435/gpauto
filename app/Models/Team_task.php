@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,16 +15,16 @@ class Team_task extends Model
 
     public function user()
     {
-        return $this->belongsTo(\App\User::class);
+        return $this->belongsTo(\App\Models\User::class);
     }
 
     public function team()
     {
-        return $this->belongsTo(\App\Team::class);
+        return $this->belongsTo(\App\Models\Team::class);
     }
 
     public function status()
     {
-        return $this->belongsTo(\App\Status::class);
+        return $this->belongsTo(\App\Models\Status::class);
     }
 }

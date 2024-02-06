@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Appointment_user;
-use App\Payment_mode;
-use App\Washing_price;
+use App\Models\Appointment_user;
+use App\Models\Payment_mode;
+use App\Models\Washing_price;
 use Illuminate\Http\Request;
 
 class AdminPaymentController extends Controller

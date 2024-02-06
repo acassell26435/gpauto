@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Appointment;
-use App\Status;
-use App\User;
-use App\Vehicle_company;
-use App\Vehicle_modal;
-use App\Vehicle_type;
-use App\Washing_plan;
-use App\Washing_price;
+use App\Models\Appointment;
+use App\Models\Status;
+use App\Models\User;
+use App\Models\Vehicle_company;
+use App\Models\Vehicle_modal;
+use App\Models\Vehicle_type;
+use App\Models\Washing_plan;
+use App\Models\Washing_price;
 use Illuminate\Http\Request;
 use Mail;
 use PDF;

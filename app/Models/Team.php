@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,11 +13,11 @@ class Team extends Model
 
     public function social_teams()
     {
-        return $this->hasOne(\App\Social_team::class);
+        return $this->hasOne(\App\Models\Social_team::class);
     }
 
     public function team_task()
     {
-        return $this->hasOne(\App\Team_task::class);
+        return $this->hasOne(\App\Models\Team_task::class);
     }
 }
