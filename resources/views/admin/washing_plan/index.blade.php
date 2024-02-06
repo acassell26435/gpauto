@@ -37,21 +37,21 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Create Washing Plan</h4>
         </div>
-        {!! Form::open(['method' => 'POST', 'action' => 'AdminWashingPlanController@store']) !!}
+        {{ html()->form('POST', action('AdminWashingPlanController@store'))->open() }}
           <div class="modal-body">
             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                {!! Form::label('name', 'Plan Name') !!}
-                {!! Form::text('name', null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'Enter Plan Name']) !!}
+                {{ html()->label('Plan Name', 'name') }}
+                {{ html()->text('name')->class('form-control')->required()->placeholder('Enter Plan Name') }}
                 <small class="text-danger">{{ $errors->first('name') }}</small>
             </div>
           </div>
           <div class="modal-footer">
             <div class="btn-group pull-right">
-              {!! Form::reset("Reset", ['class' => 'btn btn-yellow btn-default']) !!}
-              {!! Form::submit("Add Plan", ['class' => 'btn btn-add btn-default']) !!}
+              {{ html()->reset("Reset", ['class' => 'btn btn-yellow btn-default']) }}
+              {{ html()->submit("Add Plan")->class('btn btn-add btn-default') }}
             </div>
           </div>
-        {!! Form::close() !!}
+        {{ html()->form()->close() }}
       </div>
     </div>
   </div>
@@ -119,21 +119,21 @@
                                               <button type="button" class="close" data-dismiss="modal">&times;</button>
                                               <h4 class="modal-title">Update includes</h4>
                                             </div>
-                                            {!! Form::model($washing_include, ['method' => 'PATCH', 'action' => ['AdminWashingIncludeController@update', $washing_include->id]]) !!}
+                                            {{ html()->modelForm($washing_include, 'PATCH', action('AdminWashingIncludeController@update', [$washing_include->id]))->open() }}
                                               <div class="modal-body">
                                                 <div class="form-group{{ $errors->has('washing_plan_include') ? ' has-error' : '' }}">
-                                                    {!! Form::label('washing_plan_include', 'Include Plan') !!}
-                                                    {!! Form::text('washing_plan_include', null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'Enter Plan Include']) !!}
+                                                    {{ html()->label('Include Plan', 'washing_plan_include') }}
+                                                    {{ html()->text('washing_plan_include')->class('form-control')->required()->placeholder('Enter Plan Include') }}
                                                     <small class="text-danger">{{ $errors->first('washing_plan_include') }}</small>
                                                 </div>
-                                                {!! Form::hidden('washing_plan_id', $washing_plan->id) !!}
+                                                {{ html()->hidden('washing_plan_id', $washing_plan->id) }}
                                               </div>
                                               <div class="modal-footer">
                                                 <div class="btn-group pull-right">
-                                                  {!! Form::submit("Update", ['class' => 'btn btn-add btn-default']) !!}
+                                                  {{ html()->submit("Update")->class('btn btn-add btn-default') }}
                                                 </div>
                                               </div>
-                                            {!! Form::close() !!}
+                                            {{ html()->closeModelForm() }}
                                           </div>
                                         </div>
                                       </div>
@@ -153,10 +153,10 @@
                                               <p>Do you really want to delete these records? This process cannot be undone.</p>
                                             </div>
                                             <div class="modal-footer">
-                                              {!! Form::open(['method' => 'DELETE',  'action' => ['AdminWashingIncludeController@destroy', $washing_include->id]]) !!}
-                                                  {!! Form::reset("No", ['class' => 'btn btn-gray', 'data-dismiss' => 'modal']) !!}
-                                                  {!! Form::submit("Yes", ['class' => 'btn btn-danger']) !!}
-                                              {!! Form::close() !!}
+                                              {{ html()->form('DELETE', action('AdminWashingIncludeController@destroy', [$washing_include->id]))->open() }}
+                                                  {{ html()->reset("No", ['class' => 'btn btn-gray', 'data-dismiss' => 'modal']) }}
+                                                  {{ html()->submit("Yes")->class('btn btn-danger') }}
+                                              {{ html()->form()->close() }}
                                             </div>
                                           </div>
                                         </div>
@@ -168,20 +168,20 @@
                             </tbody>
                           </table>
                         </div>
-                        {!! Form::open(['method' => 'POST', 'action' => 'AdminWashingIncludeController@store']) !!}
+                        {{ html()->form('POST', action('AdminWashingIncludeController@store'))->open() }}
                         <div class="form-group{{ $errors->has('washing_plan_include') ? ' has-error' : '' }}">
-                            {!! Form::label('washing_plan_include', 'Plans Include') !!}
-                            {!! Form::text('washing_plan_include', null, ['class' => 'form-control', 'required' => 'required', 'autofocus']) !!}
+                            {{ html()->label('Plans Include', 'washing_plan_include') }}
+                            {{ html()->text('washing_plan_include')->class('form-control')->required()->autofocus() }}
                             <small class="text-danger">{{ $errors->first('washing_plan_include') }}</small>
                         </div>
                       </div>
                       <div class="modal-footer">
-                        {!! Form::hidden('washing_plan_id', $washing_plan->id) !!}
+                        {{ html()->hidden('washing_plan_id', $washing_plan->id) }}
                         <div class="btn-group pull-right">
-                          {!! Form::reset("Reset", ['class' => 'btn btn-yellow btn-default']) !!}
-                          {!! Form::submit("Service Include", ['class' => 'btn btn-add btn-default']) !!}
+                          {{ html()->reset("Reset", ['class' => 'btn btn-yellow btn-default']) }}
+                          {{ html()->submit("Service Include")->class('btn btn-add btn-default') }}
                         </div>
-                        {!! Form::close() !!}
+                        {{ html()->form()->close() }}
                       </div>
                     </div>
                   </div>
@@ -200,20 +200,20 @@
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Edit Washing Plan</h4>
                       </div>
-                      {!! Form::model($washing_plan, ['method' => 'PATCH', 'action' => ['AdminWashingPlanController@update', $washing_plan->id]]) !!}
+                      {{ html()->modelForm($washing_plan, 'PATCH', action('AdminWashingPlanController@update', [$washing_plan->id]))->open() }}
                         <div class="modal-body">
                           <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                              {!! Form::label('name', 'Plan Name') !!}
-                              {!! Form::text('name', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                              {{ html()->label('Plan Name', 'name') }}
+                              {{ html()->text('name')->class('form-control')->required() }}
                               <small class="text-danger">{{ $errors->first('name') }}</small>
                           </div>
                         </div>
                         <div class="modal-footer">
                           <div class="btn-group pull-right">
-                            {!! Form::submit("Update", ['class' => 'btn btn-add btn-default']) !!}
+                            {{ html()->submit("Update")->class('btn btn-add btn-default') }}
                           </div>
                         </div>
-                      {!! Form::close() !!}
+                      {{ html()->closeModelForm() }}
                     </div>
                   </div>
                 </div>
@@ -233,10 +233,10 @@
                         <p>Do you really want to delete these records? This process cannot be undone.</p>
                       </div>
                       <div class="modal-footer">
-                        {!! Form::open(['method' => 'DELETE', 'action' => ['AdminWashingPlanController@destroy', $washing_plan->id]]) !!}
-                            {!! Form::reset("No", ['class' => 'btn btn-gray', 'data-dismiss' => 'modal']) !!}
-                            {!! Form::submit("Yes", ['class' => 'btn btn-danger']) !!}
-                        {!! Form::close() !!}
+                        {{ html()->form('DELETE', action('AdminWashingPlanController@destroy', [$washing_plan->id]))->open() }}
+                            {{ html()->reset("No", ['class' => 'btn btn-gray', 'data-dismiss' => 'modal']) }}
+                            {{ html()->submit("Yes")->class('btn btn-danger') }}
+                        {{ html()->form()->close() }}
                       </div>
                     </div>
                   </div>

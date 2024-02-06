@@ -37,35 +37,35 @@
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h4 class="modal-title">Create Opening Hours</h4>
           </div>
-          {!! Form::open(['method' => 'POST', 'action' => 'AdminOpeningHoursController@store']) !!}
+          {{ html()->form('POST', action('AdminOpeningHoursController@store'))->open() }}
             <div class="modal-body">
               <div class="form-group{{ $errors->has('day') ? ' has-error' : '' }}">
-                  {!! Form::label('day', 'Day') !!}
-                  {!! Form::select('day', array('Monday'=>'Monday', 'Tuesday'=>'Tuesday', 'Wednesday'=>'Wednesday', 'Thursday'=>'Thursday', 'Friday'=>'Friday', 'Saturday'=>'Saturday', 'Sunday'=>'Sunday'), null, ['class' => 'form-control select2', 'required' => 'required', 'placeholder'=>'Chooes Day']) !!}
+                  {{ html()->label('Day', 'day') }}
+                  {{ html()->select('day', array('Monday' => 'Monday', 'Tuesday' => 'Tuesday', 'Wednesday' => 'Wednesday', 'Thursday' => 'Thursday', 'Friday' => 'Friday', 'Saturday' => 'Saturday', 'Sunday' => 'Sunday'))->class('form-control select2')->required()->placeholder('Chooes Day') }}
                   <small class="text-danger">{{ $errors->first('day') }}</small>
               </div>
               <div class="bootstrap-timepicker">
                 <div class="form-group{{ $errors->has('opening_time') ? ' has-error' : '' }}">
-                  {!! Form::label('opening_time', 'Opening Time') !!}
-                  {!! Form::text('opening_time', null, ['class' => 'form-control timepicker']) !!}
+                  {{ html()->label('Opening Time', 'opening_time') }}
+                  {{ html()->text('opening_time')->class('form-control timepicker') }}
                   <small class="text-danger">{{ $errors->first('opening_time') }}</small>
                 </div>
               </div>
               <div class="bootstrap-timepicker">
                 <div class="form-group{{ $errors->has('closing_time') ? ' has-error' : '' }} bootstrap-timepicker">
-                    {!! Form::label('closing_time', 'Closing Time') !!}
-                    {!! Form::text('closing_time', null, ['class' => 'form-control timepicker', 'placeholder'=>'eg: 8:00 pm']) !!}
+                    {{ html()->label('Closing Time', 'closing_time') }}
+                    {{ html()->text('closing_time')->class('form-control timepicker')->placeholder('eg: 8:00 pm') }}
                     <small class="text-danger">{{ $errors->first('closing_time') }}</small>
                 </div>
               </div>
             </div>
             <div class="modal-footer">
               <div class="btn-group pull-right">
-                {!! Form::reset("Reset", ['class' => 'btn btn-yellow btn-default']) !!}
-                {!! Form::submit("Add Time", ['class' => 'btn btn-default btn-add']) !!}
+                {{ html()->reset("Reset", ['class' => 'btn btn-yellow btn-default']) }}
+                {{ html()->submit("Add Time")->class('btn btn-default btn-add') }}
               </div>
             </div>
-          {!! Form::close() !!}
+          {{ html()->form()->close() }}
         </div>
       </div>
     </div>
@@ -109,34 +109,34 @@
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <h4 class="modal-title">Edit Timing</h4>
                           </div>
-                          {!! Form::model($timing, ['method' => 'PATCH', 'action' => ['AdminOpeningHoursController@update', $timing->id]]) !!}
+                          {{ html()->modelForm($timing, 'PATCH', action('AdminOpeningHoursController@update', [$timing->id]))->open() }}
                             <div class="modal-body">
                               <div class="form-group{{ $errors->has('day') ? ' has-error' : '' }}">
-                                  {!! Form::label('day', 'Day') !!}
-                                  {!! Form::select('day', array('-'=>'Choose Day', 'Monday'=>'Monday', 'Tuesday'=>'Tuesday', 'Wednesday'=>'Wednesday', 'Thursday'=>'Thursday', 'Friday'=>'Friday', 'Saturday'=>'Saturday', 'Sunday'=>'Sunday'), null, ['class' => 'form-control select2', 'required' => 'required']) !!}
+                                  {{ html()->label('Day', 'day') }}
+                                  {{ html()->select('day', array('-' => 'Choose Day', 'Monday' => 'Monday', 'Tuesday' => 'Tuesday', 'Wednesday' => 'Wednesday', 'Thursday' => 'Thursday', 'Friday' => 'Friday', 'Saturday' => 'Saturday', 'Sunday' => 'Sunday'))->class('form-control select2')->required() }}
                                   <small class="text-danger">{{ $errors->first('day') }}</small>
                               </div>
                               <div class="bootstrap-timepicker">
                                 <div class="form-group{{ $errors->has('opening_time') ? ' has-error' : '' }}">
-                                    {!! Form::label('opening_time', 'Opening Time') !!}
-                                    {!! Form::text('opening_time', null, ['class' => 'form-control timepicker', 'placeholder'=>'eg: 9:00 am']) !!}
+                                    {{ html()->label('Opening Time', 'opening_time') }}
+                                    {{ html()->text('opening_time')->class('form-control timepicker')->placeholder('eg: 9:00 am') }}
                                     <small class="text-danger">{{ $errors->first('opening_time') }}</small>
                                 </div>
                               </div>
                               <div class="bootstrap-timepicker">
                                 <div class="form-group{{ $errors->has('closing_time') ? ' has-error' : '' }}">
-                                    {!! Form::label('closing_time', 'Closing Time') !!}
-                                    {!! Form::text('closing_time', null, ['class' => 'form-control timepicker', 'placeholder'=>'eg: 8:00 pm']) !!}
+                                    {{ html()->label('Closing Time', 'closing_time') }}
+                                    {{ html()->text('closing_time')->class('form-control timepicker')->placeholder('eg: 8:00 pm') }}
                                     <small class="text-danger">{{ $errors->first('closing_time') }}</small>
                                 </div>
                               </div>  
                             </div>
                             <div class="modal-footer">
                               <div class="btn-group pull-right">
-                                {!! Form::submit("Update", ['class' => 'btn btn-default btn-add']) !!}
+                                {{ html()->submit("Update")->class('btn btn-default btn-add') }}
                               </div>
                             </div>
-                          {!! Form::close() !!}
+                          {{ html()->closeModelForm() }}
                         </div>
                       </div>
                     </div>
@@ -156,10 +156,10 @@
                             <p>Do you really want to delete these records? This process cannot be undone.</p>
                           </div>
                           <div class="modal-footer">
-                            {!! Form::open(['method' => 'DELETE', 'action' => ['AdminOpeningHoursController@destroy', $timing->id]]) !!}
-                                {!! Form::reset("No", ['class' => 'btn btn-gray', 'data-dismiss' => 'modal']) !!}
-                                {!! Form::submit("Yes", ['class' => 'btn btn-danger']) !!}
-                            {!! Form::close() !!}
+                            {{ html()->form('DELETE', action('AdminOpeningHoursController@destroy', [$timing->id]))->open() }}
+                                {{ html()->reset("No", ['class' => 'btn btn-gray', 'data-dismiss' => 'modal']) }}
+                                {{ html()->submit("Yes")->class('btn btn-danger') }}
+                            {{ html()->form()->close() }}
                           </div>
                         </div>
                       </div>

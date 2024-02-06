@@ -36,31 +36,31 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Create Facts</h4>
         </div>
-        {!! Form::open(['method' => 'POST', 'action' => 'AdminFactsController@store']) !!}
+        {{ html()->form('POST', action('AdminFactsController@store'))->open() }}
           <div class="modal-body">
             <div class="form-group{{ $errors->has('icon') ? ' has-error' : '' }}">
-                {!! Form::label('icon', 'Icon Code') !!}
-                {!! Form::text('icon', null, ['class' => 'form-control icon-picker', 'required' => 'required', 'placeholder'=>'Choose Icon']) !!}
+                {{ html()->label('Icon Code', 'icon') }}
+                {{ html()->text('icon')->class('form-control icon-picker')->required()->placeholder('Choose Icon') }}
                 <small class="text-danger">{{ $errors->first('icon') }}</small>
             </div>
             <div class="form-group{{ $errors->has('number') ? ' has-error' : '' }}">
-                {!! Form::label('number', 'Number') !!}
-                {!! Form::text('number', null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'Enter Facts No.']) !!}
+                {{ html()->label('Number', 'number') }}
+                {{ html()->text('number')->class('form-control')->required()->placeholder('Enter Facts No.') }}
                 <small class="text-danger">{{ $errors->first('number') }}</small>
             </div>
             <div class="form-group{{ $errors->has('detail') ? ' has-error' : '' }}">
-                {!! Form::label('detail', 'Detail') !!}
-                {!! Form::text('detail', null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'Enter Facts Name']) !!}
+                {{ html()->label('Detail', 'detail') }}
+                {{ html()->text('detail')->class('form-control')->required()->placeholder('Enter Facts Name') }}
                 <small class="text-danger">{{ $errors->first('detail') }}</small>
             </div>
           </div>
           <div class="modal-footer">
             <div class="btn-group pull-right">
-              {!! Form::reset("Reset", ['class' => 'btn btn-yellow btn-default']) !!}
-              {!! Form::submit("Add", ['class' => 'btn btn-default btn-add']) !!}
+              {{ html()->reset("Reset", ['class' => 'btn btn-yellow btn-default']) }}
+              {{ html()->submit("Add")->class('btn btn-default btn-add') }}
             </div>
           </div>
-        {!! Form::close() !!}
+        {{ html()->form()->close() }}
       </div>
     </div>
   </div>
@@ -98,30 +98,30 @@
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Edit Facts</h4>
                       </div>
-                      {!! Form::model($fact, ['method' => 'PATCH', 'action' => ['AdminFactsController@update', $fact->id]]) !!}
+                      {{ html()->modelForm($fact, 'PATCH', action('AdminFactsController@update', [$fact->id]))->open() }}
                         <div class="modal-body">
                           <div class="form-group{{ $errors->has('icon') ? ' has-error' : '' }}">
-                              {!! Form::label('icon', 'Icon Code') !!}
-                              {!! Form::text('icon', null, ['class' => 'form-control icon-picker', 'required' => 'required', 'placeholder'=>'Choose Icon']) !!}
+                              {{ html()->label('Icon Code', 'icon') }}
+                              {{ html()->text('icon')->class('form-control icon-picker')->required()->placeholder('Choose Icon') }}
                               <small class="text-danger">{{ $errors->first('icon') }}</small>
                           </div>
                           <div class="form-group{{ $errors->has('number') ? ' has-error' : '' }}">
-                              {!! Form::label('number', 'Number') !!}
-                              {!! Form::text('number', null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'Enter Facts No.']) !!}
+                              {{ html()->label('Number', 'number') }}
+                              {{ html()->text('number')->class('form-control')->required()->placeholder('Enter Facts No.') }}
                               <small class="text-danger">{{ $errors->first('number') }}</small>
                           </div>
                           <div class="form-group{{ $errors->has('detail') ? ' has-error' : '' }}">
-                              {!! Form::label('detail', 'Detail') !!}
-                              {!! Form::text('detail', null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'Enter Facts Name']) !!}
+                              {{ html()->label('Detail', 'detail') }}
+                              {{ html()->text('detail')->class('form-control')->required()->placeholder('Enter Facts Name') }}
                               <small class="text-danger">{{ $errors->first('detail') }}</small>
                           </div>
                         </div>
                         <div class="modal-footer">
                           <div class="btn-group pull-right">
-                            {!! Form::submit("Update", ['class' => 'btn btn-default btn-add']) !!}
+                            {{ html()->submit("Update")->class('btn btn-default btn-add') }}
                           </div>
                         </div>
-                      {!! Form::close() !!}
+                      {{ html()->closeModelForm() }}
                     </div>
                   </div>
                 </div>
@@ -140,10 +140,10 @@
                         <p>Do you really want to delete these records? This process cannot be undone.</p>
                       </div>
                       <div class="modal-footer">
-                        {!! Form::open(['method' => 'DELETE', 'action' => ['AdminFactsController@destroy', $fact->id]]) !!}
-                              {!! Form::reset("No", ['class' => 'btn btn-gray', 'data-dismiss' => 'modal']) !!}
-                              {!! Form::submit("Yes", ['class' => 'btn btn-danger']) !!}
-                        {!! Form::close() !!}
+                        {{ html()->form('DELETE', action('AdminFactsController@destroy', [$fact->id]))->open() }}
+                              {{ html()->reset("No", ['class' => 'btn btn-gray', 'data-dismiss' => 'modal']) }}
+                              {{ html()->submit("Yes")->class('btn btn-danger') }}
+                        {{ html()->form()->close() }}
                       </div>
                     </div>
                   </div>

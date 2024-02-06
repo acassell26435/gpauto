@@ -72,51 +72,51 @@
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Edit Contact Information</h4>
                       </div>
-                      {!! Form::model($contact, ['method' => 'PATCH', 'action' => ['AdminContactController@update', $contacts->id], 'files'=>true]) !!}
+                      {{ html()->modelForm($contact, 'PATCH', action('AdminContactController@update', [$contacts->id]))->acceptsFiles()->open() }}
                         <div class="modal-body">
                           <div class="row">
                             <div class="col-md-6">
                               <div class="form-group{{ $errors->has('c_name') ? ' has-error' : '' }}">
-                                  {!! Form::label('c_name', 'Company Name') !!}
-                                  {!! Form::text('c_name', null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'Enter Your Company Name']) !!}
+                                  {{ html()->label('Company Name', 'c_name') }}
+                                  {{ html()->text('c_name')->class('form-control')->required()->placeholder('Enter Your Company Name') }}
                                   <small class="text-danger">{{ $errors->first('c_name') }}</small>
                               </div>
                               <div class="form-group{{ $errors->has('mobile') ? ' has-error' : '' }}">
-                                {!! Form::label('mobile', 'Mobile No.') !!}
-                                {!! Form::text('mobile', null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'Enter Mobile No.']) !!}
+                                {{ html()->label('Mobile No.', 'mobile') }}
+                                {{ html()->text('mobile')->class('form-control')->required()->placeholder('Enter Mobile No.') }}
                                 <small class="text-danger">{{ $errors->first('mobile') }}</small>
                               </div>
                               <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
-                                {!! Form::label('phone', 'Phone No.') !!}
-                                {!! Form::text('phone', null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'Enter Phone No.']) !!}
+                                {{ html()->label('Phone No.', 'phone') }}
+                                {{ html()->text('phone')->class('form-control')->required()->placeholder('Enter Phone No.') }}
                                 <small class="text-danger">{{ $errors->first('phone') }}</small>
                               </div>
                               <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                  {!! Form::label('email', 'Email address') !!}
-                                  {!! Form::email('email', null, ['class' => 'form-control', 'required' => 'required', 'placeholder' => 'eg: foo@bar.com']) !!}
+                                  {{ html()->label('Email address', 'email') }}
+                                  {{ html()->email('email')->class('form-control')->attribute('required', 'required')->attribute('placeholder', 'eg: foo@bar.com') }}
                                   <small class="text-danger">{{ $errors->first('email') }}</small>
                               </div>
                               <div class="form-group{{ $errors->has('website') ? ' has-error' : '' }}">
-                                {!! Form::label('website', 'Your Website') !!}
-                                {!! Form::text('website', null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'eg: www.xyz.com']) !!}
+                                {{ html()->label('Your Website', 'website') }}
+                                {{ html()->text('website')->class('form-control')->required()->placeholder('eg: www.xyz.com') }}
                                 <small class="text-danger">{{ $errors->first('website') }}</small>
                               </div>
                             </div>
                             <div class="col-md-6">
                               <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
-                                  {!! Form::label('address', 'Address') !!}
-                                  {!! Form::textarea('address', null, ['class' => 'form-control', 'rows'=>'5', 'required' => 'required', 'placeholder'=>'Enter Your Address']) !!}
+                                  {{ html()->label('Address', 'address') }}
+                                  {{ html()->textarea('address')->class('form-control')->rows('5')->required()->placeholder('Enter Your Address') }}
                                   <small class="text-danger">{{ $errors->first('address') }}</small>
                               </div>
                               <div class="form-group{{ $errors->has('logo') ? ' has-error' : '' }}">
-                                  {!! Form::label('logo', 'Choose Logo') !!}
-                                  {!! Form::file('logo') !!}
+                                  {{ html()->label('Choose Logo', 'logo') }}
+                                  {{ html()->file('logo') }}
                                   <p class="help-block">Help block text</p>
                                   <small class="text-danger">{{ $errors->first('logo') }}</small>
                               </div>
                               <div class="form-group{{ $errors->has('logo_two') ? ' has-error' : '' }}">
-                                  {!! Form::label('logo_two', 'Logo 2') !!}
-                                  {!! Form::file('logo_two') !!}
+                                  {{ html()->label('Logo 2', 'logo_two') }}
+                                  {{ html()->file('logo_two') }}
                                   <p class="help-block">Help block text</p>
                                   <small class="text-danger">{{ $errors->first('logo_two') }}</small>
                               </div>
@@ -125,7 +125,7 @@
                               <div class="form-group{{ $errors->has('inspect') ? ' has-error' : '' }} switch-main-block">
                                 <div class="row">
                                   <div class="col-xs-6">
-                                    {!! Form::label('inspect', 'Inspect Element') !!}
+                                    {{ html()->label('Inspect Element', 'inspect') }}
                                   </div>
                                   <div class="col-xs-5 pad-0">
                                     <label class="switch">                
@@ -141,7 +141,7 @@
                                <div class="form-group{{ $errors->has('rightclick') ? ' has-error' : '' }} switch-main-block">
                                   <div class="row">
                                     <div class="col-xs-4">
-                                      {!! Form::label('rightclick', 'Rightclick') !!}
+                                      {{ html()->label('Rightclick', 'rightclick') }}
                                     </div>
                                     <div class="col-xs-5 pad-0">
                                       <label class="switch">                
@@ -158,7 +158,7 @@
                                <div class="form-group{{ $errors->has('APP_DEBUG') ? ' has-error' : '' }} switch-main-block">
                                   <div class="row">
                                     <div class="col-xs-6">
-                                      {!! Form::label('APP_DEBUG', 'Debug Mode') !!}
+                                      {{ html()->label('Debug Mode', 'APP_DEBUG') }}
                                     </div>
                                     <div class="col-xs-5 pad-0">
                                       <label class="switch">                
@@ -173,10 +173,10 @@
                         </div>
                         <div class="modal-footer">
                           <div class="btn-group pull-right">
-                              {!! Form::submit("Save", ['class' => 'btn btn-default btn-add']) !!}
+                              {{ html()->submit("Save")->class('btn btn-default btn-add') }}
                           </div>
                         </div>
-                      {!! Form::close() !!}
+                      {{ html()->closeModelForm() }}
                     </div>
                   </div>
                 </div>
@@ -186,33 +186,33 @@
         
         </tbody>
       </table>
-      {{-- {!! Form::model($contacts, ['method' => 'PATCH', 'action' => ['AdminContactController@update', $contacts->id], 'files'=>true]) !!}
+      {{-- {{ html()->modelForm($contacts, 'PATCH', action('AdminContactController@update', [$contacts->id]))->acceptsFiles()->open() }}
         <div class="box-body">
           <div class="row">
             <div class="col-md-6">
               <div class="form-group{{ $errors->has('c_name') ? ' has-error' : '' }}">
-                  {!! Form::label('c_name', 'Company Name') !!}
-                  {!! Form::text('c_name', null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'Enter Your Company Name']) !!}
+                  {{ html()->label('Company Name', 'c_name') }}
+                  {{ html()->text('c_name')->class('form-control')->required()->placeholder('Enter Your Company Name') }}
                   <small class="text-danger">{{ $errors->first('c_name') }}</small>
               </div>
               <div class="form-group{{ $errors->has('mobile') ? ' has-error' : '' }}">
-                {!! Form::label('mobile', 'Mobile No.') !!}
-                {!! Form::text('mobile', null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'Enter Mobile No.']) !!}
+                {{ html()->label('Mobile No.', 'mobile') }}
+                {{ html()->text('mobile')->class('form-control')->required()->placeholder('Enter Mobile No.') }}
                 <small class="text-danger">{{ $errors->first('mobile') }}</small>
               </div>
               <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
-                {!! Form::label('phone', 'Phone No.') !!}
-                {!! Form::text('phone', null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'Enter Phone No.']) !!}
+                {{ html()->label('Phone No.', 'phone') }}
+                {{ html()->text('phone')->class('form-control')->required()->placeholder('Enter Phone No.') }}
                 <small class="text-danger">{{ $errors->first('phone') }}</small>
               </div>
               <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                  {!! Form::label('email', 'Email address') !!}
-                  {!! Form::email('email', null, ['class' => 'form-control', 'required' => 'required', 'placeholder' => 'eg: foo@bar.com']) !!}
+                  {{ html()->label('Email address', 'email') }}
+                  {{ html()->email('email')->class('form-control')->attribute('required', 'required')->attribute('placeholder', 'eg: foo@bar.com') }}
                   <small class="text-danger">{{ $errors->first('email') }}</small>
               </div>
               <div class="form-group{{ $errors->has('website') ? ' has-error' : '' }}">
-                {!! Form::label('website', 'Your Website') !!}
-                {!! Form::text('website', null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'eg: www.xyz.com']) !!}
+                {{ html()->label('Your Website', 'website') }}
+                {{ html()->text('website')->class('form-control')->required()->placeholder('eg: www.xyz.com') }}
                 <small class="text-danger">{{ $errors->first('website') }}</small>
               </div>
               <div class="form-group{{ $errors->has('APP_DEBUG') ? ' has-error' : '' }}">
@@ -223,19 +223,19 @@
             </div>
             <div class="col-md-6">
               <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
-                  {!! Form::label('address', 'Address') !!}
-                  {!! Form::textarea('address', null, ['class' => 'form-control', 'rows'=>'5', 'required' => 'required', 'placeholder'=>'Enter Your Address']) !!}
+                  {{ html()->label('Address', 'address') }}
+                  {{ html()->textarea('address')->class('form-control')->rows('5')->required()->placeholder('Enter Your Address') }}
                   <small class="text-danger">{{ $errors->first('address') }}</small>
               </div>
               <div class="form-group{{ $errors->has('logo') ? ' has-error' : '' }}">
-                  {!! Form::label('logo', 'Choose Logo') !!}
-                  {!! Form::file('logo') !!}
+                  {{ html()->label('Choose Logo', 'logo') }}
+                  {{ html()->file('logo') }}
                   <p class="help-block">Help block text</p>
                   <small class="text-danger">{{ $errors->first('logo') }}</small>
               </div>
               <div class="form-group{{ $errors->has('logo_two') ? ' has-error' : '' }}">
-                  {!! Form::label('logo_two', 'Logo 2') !!}
-                  {!! Form::file('logo_two') !!}
+                  {{ html()->label('Logo 2', 'logo_two') }}
+                  {{ html()->file('logo_two') }}
                   <p class="help-block">Help block text</p>
                   <small class="text-danger">{{ $errors->first('logo_two') }}</small>
               </div>
@@ -258,10 +258,10 @@
         </div>
         <div class="box-footer">
            <div class="btn-group">
-                {!! Form::submit("Save", ['class' => 'btn btn-default btn-add']) !!}
+                {{ html()->submit("Save")->class('btn btn-default btn-add') }}
             </div>
         </div>
-      {!! Form::close() !!} --}}
+      {{ html()->closeModelForm() }} --}}
         
    </div>
   @endif

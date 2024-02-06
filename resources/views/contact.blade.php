@@ -47,34 +47,34 @@
           </div>
         </div>
         <div class="col-md-9  col-sm-8">
-          {!! Form::open(['method' => 'POST', 'action'=>'contactMailController@send', 'class' => 'contact-form']) !!}
+          {{ html()->form('POST', action('contactMailController@send'))->class('contact-form')->open() }}
           {{ csrf_field() }}
             <div class="row">
               <div class="col-sm-6">
                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                  {!! Form::text('name', null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'Full Name']) !!}
+                  {{ html()->text('name')->class('form-control')->required()->placeholder('Full Name') }}
                   <small class="text-danger">{{ $errors->first('name') }}</small>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                  {!! Form::email('email', null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'E-Mail']) !!}
+                  {{ html()->email('email')->class('form-control')->attribute('required', 'required')->attribute('placeholder', 'E-Mail') }}
                   <small class="text-danger">{{ $errors->first('email') }}</small>
                 </div>
               </div>
             </div>
             <div class="form-group{{ $errors->has('subject') ? ' has-error' : '' }}">
-              {!! Form::text('subject', null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'Subject']) !!}
+              {{ html()->text('subject')->class('form-control')->required()->placeholder('Subject') }}
               <small class="text-danger">{{ $errors->first('subject') }}</small>
             </div>
             <div class="form-group{{ $errors->has('mail_message') ? ' has-error' : '' }} message">
-                {!! Form::textarea('mail_message', null, ['rows'=>'6', 'required' => 'required', 'placeholder'=>'Message']) !!}
+                {{ html()->textarea('mail_message')->rows('6')->required()->placeholder('Message') }}
                 <small class="text-danger">{{ $errors->first('mail_message') }}</small>
             </div>
             <div class="btn-group pull-right">
               <button type="submit" class="btn btn-default">Send Message</button>
             </div>
-          {!! Form::close() !!}
+          {{ html()->form()->close() }}
         </div>
       </div>
     </div>

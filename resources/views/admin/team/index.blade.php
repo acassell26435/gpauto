@@ -106,28 +106,28 @@
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                                             <h4 class="modal-title">Update Social Links</h4>
                                           </div>
-                                          {!! Form::model($social, ['method' => 'PATCH', 'action' => ['AdminTeamSocialController@update', $social->id]]) !!}
+                                          {{ html()->modelForm($social, 'PATCH', action('AdminTeamSocialController@update', [$social->id]))->open() }}
                                             <div class="modal-body">
                                               <div class="row">
                                                 <div class="col-md-4">
-                                                  {!! Form::hidden('team_id', $team->id) !!}
+                                                  {{ html()->hidden('team_id', $team->id) }}
                                                   <div class="form-group{{ $errors->has('url') ? ' has-error' : '' }}">
-                                                    {!! Form::label('url', 'Social URL') !!}
-                                                    {!! Form::text('url', null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'social url']) !!}
+                                                    {{ html()->label('Social URL', 'url') }}
+                                                    {{ html()->text('url')->class('form-control')->required()->placeholder('social url') }}
                                                     <small class="text-danger">{{ $errors->first('url') }}</small>
                                                   </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                   <div class="form-group{{ $errors->has('social') ? ' has-error' : '' }}">
-                                                    {!! Form::label('social', 'Social') !!}
-                                                    {!! Form::select('social', [""=>"Social Networks", "Facebook"=>"Facebook", "Instagram"=>"Instagram", "Twitter"=>"Twitter", "Google"=>"Google", "Pinterest"=>"Pinterest", "You Tube"=>"You Tube", "Tumblr"=>"Tumblr", "Dribbble"=>'Dribbble', "Flickr"=>"Flickr", "Github"=>"Github", "Linkedin"=>"Linkedin", "Skype"=>"Skype"], null, ['class' => 'form-control select2', 'required' => 'required']) !!}
+                                                    {{ html()->label('Social', 'social') }}
+                                                    {{ html()->select('social', ["" => "Social Networks", "Facebook" => "Facebook", "Instagram" => "Instagram", "Twitter" => "Twitter", "Google" => "Google", "Pinterest" => "Pinterest", "You Tube" => "You Tube", "Tumblr" => "Tumblr", "Dribbble" => 'Dribbble', "Flickr" => "Flickr", "Github" => "Github", "Linkedin" => "Linkedin", "Skype" => "Skype"])->class('form-control select2')->required() }}
                                                     <small class="text-danger">{{ $errors->first('social') }}</small>
                                                   </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                   <div class="form-group{{ $errors->has('inputname') ? ' has-error' : '' }}">
-                                                      {!! Form::label('social_icon', 'Social Icons') !!}
-                                                      {!! Form::text('social_icon', null, ['class' => 'form-control social-icon-picker-left', 'required' => 'required', 'placeholder'=>'Choose social icon']) !!}
+                                                      {{ html()->label('Social Icons', 'social_icon') }}
+                                                      {{ html()->text('social_icon')->class('form-control social-icon-picker-left')->required()->placeholder('Choose social icon') }}
                                                       <small class="text-danger">{{ $errors->first('inputname') }}</small>
                                                   </div>
                                                 </div>
@@ -135,10 +135,10 @@
                                             </div>
                                             <div class="modal-footer">
                                               <div class="btn-group pull-right">
-                                                {!! Form::submit("Update", ['class' => 'btn btn-add btn-default']) !!}
+                                                {{ html()->submit("Update")->class('btn btn-add btn-default') }}
                                               </div>
                                             </div>
-                                          {!! Form::close() !!}
+                                          {{ html()->closeModelForm() }}
                                         </div>
                                       </div>
                                     </div>
@@ -158,10 +158,10 @@
                                             <p>Do you really want to delete these records? This process cannot be undone.</p>
                                           </div>
                                           <div class="modal-footer">
-                                            {!! Form::open(['method' => 'DELETE',  'action' => ['AdminTeamSocialController@destroy', $social->id]]) !!}
-                                              {!! Form::reset("No", ['class' => 'btn btn-gray', 'data-dismiss' => 'modal']) !!}
-                                              {!! Form::submit("Yes", ['class' => 'btn btn-danger']) !!}
-                                            {!! Form::close() !!}
+                                            {{ html()->form('DELETE', action('AdminTeamSocialController@destroy', [$social->id]))->open() }}
+                                              {{ html()->reset("No", ['class' => 'btn btn-gray', 'data-dismiss' => 'modal']) }}
+                                              {{ html()->submit("Yes")->class('btn btn-danger') }}
+                                            {{ html()->form()->close() }}
                                           </div>
                                         </div>
                                       </div>
@@ -173,27 +173,27 @@
                           </tbody>
                         </table>
                       </div>
-                      {!! Form::open(['method' => 'POST', 'action' => 'AdminTeamSocialController@store']) !!}
+                      {{ html()->form('POST', action('AdminTeamSocialController@store'))->open() }}
                         <div class="row">
                           <div class="col-md-4">
-                            {!! Form::hidden('team_id', $team->id) !!}
+                            {{ html()->hidden('team_id', $team->id) }}
                             <div class="form-group{{ $errors->has('url') ? ' has-error' : '' }}">
-                              {!! Form::label('url', 'Social URL') !!}
-                              {!! Form::text('url', null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'social url']) !!}
+                              {{ html()->label('Social URL', 'url') }}
+                              {{ html()->text('url')->class('form-control')->required()->placeholder('social url') }}
                               <small class="text-danger">{{ $errors->first('url') }}</small>
                             </div>
                           </div>
                           <div class="col-md-4">
                             <div class="form-group{{ $errors->has('social') ? ' has-error' : '' }}">
-                              {!! Form::label('social', 'Social') !!}
-                              {!! Form::select('social', [""=>"Social Networks", "Facebook"=>"Facebook", "Instagram"=>"Instagram", "Twitter"=>"Twitter", "Google"=>"Google", "Pinterest"=>"Pinterest", "You Tube"=>"You Tube", "Tumblr"=>"Tumblr", "Dribbble"=>'Dribbble', "Flickr"=>"Flickr", "Github"=>"Github", "Linkedin"=>"Linkedin", "Skype"=>"Skype"], null, ['class' => 'form-control select2', 'required' => 'required']) !!}
+                              {{ html()->label('Social', 'social') }}
+                              {{ html()->select('social', ["" => "Social Networks", "Facebook" => "Facebook", "Instagram" => "Instagram", "Twitter" => "Twitter", "Google" => "Google", "Pinterest" => "Pinterest", "You Tube" => "You Tube", "Tumblr" => "Tumblr", "Dribbble" => 'Dribbble', "Flickr" => "Flickr", "Github" => "Github", "Linkedin" => "Linkedin", "Skype" => "Skype"])->class('form-control select2')->required() }}
                               <small class="text-danger">{{ $errors->first('social') }}</small>
                             </div>
                           </div>
                           <div class="col-md-4">
                             <div class="form-group{{ $errors->has('inputname') ? ' has-error' : '' }}">
-                                {!! Form::label('social_icon', 'Social Icons') !!}
-                                {!! Form::text('social_icon', null, ['class' => 'form-control social-icon-picker', 'required' => 'required', 'placeholder'=>'Choose social icon']) !!}
+                                {{ html()->label('Social Icons', 'social_icon') }}
+                                {{ html()->text('social_icon')->class('form-control social-icon-picker')->required()->placeholder('Choose social icon') }}
                                 <small class="text-danger">{{ $errors->first('inputname') }}</small>
                             </div>
                           </div>
@@ -201,10 +201,10 @@
                       </div>
                       <div class="modal-footer">
                         <div class="btn-group pull-right">
-                          {!! Form::reset("Reset", ['class' => 'btn btn-default btn-yellow']) !!}
-                          {!! Form::submit("Add Link", ['class' => 'btn btn-add btn-default']) !!}
+                          {{ html()->reset("Reset", ['class' => 'btn btn-default btn-yellow']) }}
+                          {{ html()->submit("Add Link")->class('btn btn-add btn-default') }}
                         </div>
-                        {!! Form::close() !!}
+                        {{ html()->form()->close() }}
                       </div>
                   </div>
                 </div>
@@ -233,10 +233,10 @@
                       <p>Do you really want to delete these records? This process cannot be undone.</p>
                     </div>
                     <div class="modal-footer">
-                      {!! Form::open(['method' => 'DELETE', 'action' => ['AdminTeamController@destroy', $team->id]]) !!}
-                          {!! Form::reset("No", ['class' => 'btn btn-gray', 'data-dismiss' => 'modal']) !!}
-                          {!! Form::submit("Yes", ['class' => 'btn btn-danger']) !!}
-                      {!! Form::close() !!}
+                      {{ html()->form('DELETE', action('AdminTeamController@destroy', [$team->id]))->open() }}
+                          {{ html()->reset("No", ['class' => 'btn btn-gray', 'data-dismiss' => 'modal']) }}
+                          {{ html()->submit("Yes")->class('btn btn-danger') }}
+                      {{ html()->form()->close() }}
                     </div>
                   </div>
                 </div>

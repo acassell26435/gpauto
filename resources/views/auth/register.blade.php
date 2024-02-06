@@ -18,70 +18,66 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-            {!! Form::label('name', 'Name') !!}
-            {!! Form::text('name', null, ['class' => 'form-control', 'required' => 'required', 'placeholder' => 'Enter your name']) !!}
+            {{ html()->label('Name', 'name') }}
+            {{ html()->text('name')->class('form-control')->required()->placeholder('Enter your name') }}
             <small class="text-danger">{{ $errors->first('name') }}</small>
           </div>
           <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-              {!! Form::label('password', 'Password') !!}
-              {!! Form::password('password', ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'Enter Password']) !!}
+              {{ html()->label('Password', 'password') }}
+              {{ html()->password('password')->class('form-control')->attribute('required', 'required')->attribute('placeholder', 'Enter Password') }}
               <small class="text-danger">{{ $errors->first('password') }}</small>
           </div>
           <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-              {!! Form::label('password_confirmation', 'Confirm Password') !!}
-              {!! Form::password('password_confirmation', ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'Confirm Password']) !!}
+              {{ html()->label('Confirm Password', 'password_confirmation') }}
+              {{ html()->password('password_confirmation')->class('form-control')->attribute('required', 'required')->attribute('placeholder', 'Confirm Password') }}
               <small class="text-danger">{{ $errors->first('password_confirmation') }}</small>
           </div>
         </div>
         <div class="col-md-3">
           <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-            {!! Form::label('email', 'Email address') !!}
-            {!! Form::email('email', null, ['class' => 'form-control', 'required' => 'required', 'placeholder' => 'eg: foo@bar.com']) !!}
+            {{ html()->label('Email address', 'email') }}
+            {{ html()->email('email')->class('form-control')->attribute('required', 'required')->attribute('placeholder', 'eg: foo@bar.com') }}
             <small class="text-danger">{{ $errors->first('email') }}</small>
           </div>
           <div class="form-group{{ $errors->has('mobile') ? ' has-error' : '' }}">
-            {!! Form::label('mobile', 'Mobile') !!}
-            {!! Form::text('mobile', null, ['class' => 'form-control', 'required' => 'required', 'placeholder' => 'Mobile no.']) !!}
+            {{ html()->label('Mobile', 'mobile') }}
+            {{ html()->text('mobile')->class('form-control')->required()->placeholder('Mobile no.') }}
             <small class="text-danger">{{ $errors->first('mobile') }}</small>
           </div>
           <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
-            {!! Form::label('phone', 'Phone') !!}
-            {!! Form::text('phone', null, ['class' => 'form-control', 'placeholder' => 'Phone no.']) !!}
+            {{ html()->label('Phone', 'phone') }}
+            {{ html()->text('phone')->class('form-control')->placeholder('Phone no.') }}
             <small class="text-danger">{{ $errors->first('phone') }}</small>
           </div>
         </div>
         <div class="col-md-3">
           <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
-            {!! Form::label('address', 'Address') !!}
-            {!! Form::textarea('address', null, ['class' => 'form-control', 'rows'=>'9', 'placeholder' => 'Enter your address']) !!}
+            {{ html()->label('Address', 'address') }}
+            {{ html()->textarea('address')->class('form-control')->rows('9')->placeholder('Enter your address') }}
             <small class="text-danger">{{ $errors->first('address') }}</small>
           </div>
         </div>
         <div class="col-md-3">
           <div class="form-group{{ $errors->has('dob') ? ' has-error' : '' }}">
-            {!! Form::label('dob', 'Date Of Birth') !!}
-            {!! Form::date('dob', null, ['class' => 'form-control', 'required' => 'required', 'placeholder' => 'Date of birth']) !!}
+            {{ html()->label('Date Of Birth', 'dob') }}
+            {{ html()->date('dob')->class('form-control')->attribute('required', 'required')->attribute('placeholder', 'Date of birth') }}
             <small class="text-danger">{{ $errors->first('dob') }}</small>
           </div>
           <div class="radio{{ $errors->has('sex') ? ' has-error' : '' }} user-create-radio">
             <span>Gender</span>
             <label for="sex" class="checkbox">
-              {!! Form::radio('sex', 'M',  null, [
-                'id'    => 'sex',
-                ]) !!} Male
+              {{ html()->radio('sex', null, 'M')->id('sex') }} Male
             </label>
             <label for="sex" class="checkbox">
-              {!! Form::radio('sex', 'F',  null, [
-                'id'    => 'sex',
-                ]) !!} Female
+              {{ html()->radio('sex', null, 'F')->id('sex') }} Female
             </label>
             <small class="text-danger">{{ $errors->first('sex') }}</small>
           </div>
         </div>
         <div class="col-md-12">
           <div class="btn-group">
-            {!! Form::reset("Reset", ['class' => 'btn btn-yellow btn-default']) !!}
-            {!! Form::submit("Register", ['class' => 'btn btn-default btn-add']) !!}
+            {{ html()->reset("Reset", ['class' => 'btn btn-yellow btn-default']) }}
+            {{ html()->submit("Register")->class('btn btn-default btn-add') }}
           </div>
           <br/>
           <h5 class=""> OR </h5>

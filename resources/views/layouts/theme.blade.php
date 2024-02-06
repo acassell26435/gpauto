@@ -254,23 +254,23 @@ Author: Media City
               <h5 class="footer-heading">Subscribe Newsletter</h5>
               <p>Lorem ipsum dolor sit amet consectetuer elit aenean commodo ligula eget dolo.</p>
               @if (env('MAILCHIMP_API_KEY') == '')
-                {!! Form::open(['method' => 'POST', 'action'=>'HomePageController@mailError', 'class' => 'subscribe-form']) !!}
+                {{ html()->form('POST', action('HomePageController@mailError'))->class('subscribe-form')->open() }}
                   <label class="sr-only">Your Email address</label>
                   <div>
                     <input type="email" class="form-control" name="email" id="email" placeholder="Enter email address">
                     <button type="submit" class="btn btn-default"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
                     <small class="text-danger">{{ $errors->first('email') }}</small>
                   </div>
-                {!! Form::close() !!}
+                {{ html()->form()->close() }}
               @else
-                {!! Form::open(['method' => 'POST', 'action'=>'mailChimpController@subscribe', 'class' => 'subscribe-form']) !!}
+                {{ html()->form('POST', action('mailChimpController@subscribe'))->class('subscribe-form')->open() }}
                 <label class="sr-only">Your Email address</label>
                 <div>
                   <input type="email" class="form-control" name="email" id="email" placeholder="Enter email address">
                   <button type="submit" class="btn btn-default"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
                   <small class="text-danger">{{ $errors->first('email') }}</small>
                 </div>
-                {!! Form::close() !!}
+                {{ html()->form()->close() }}
               @endif
               <div class="social-icon">
                 <span>Follow us on:</span>
