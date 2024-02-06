@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Model;
 
 class Payment_mode extends Model
@@ -10,7 +11,7 @@ class Payment_mode extends Model
         'mode',
     ];
 
-    public function appointment_user()
+    public function appointment_user(): HasOne
     {
         return $this->hasOne(\App\Models\Appointment_user::class);
     }

@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
@@ -28,17 +30,17 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function team_task()
+    public function team_task(): HasOne
     {
         return $this->hasOne(\App\Models\Team_task::class);
     }
 
-    public function blogs()
+    public function blogs(): HasOne
     {
         return $this->hasOne(\App\Models\Blog::class);
     }
 
-    public function appointment()
+    public function appointment(): BelongsToMany
     {
         return $this->belongsToMany(\App\Models\Appointment::class, 'appointment_users');
     }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Model;
 
 class Status extends Model
@@ -10,12 +11,12 @@ class Status extends Model
         'status',
     ];
 
-    public function team_task()
+    public function team_task(): HasOne
     {
         return $this->hasOne(\App\Models\Team_task::class);
     }
 
-    public function appointment()
+    public function appointment(): HasOne
     {
         return $this->hasOne(\App\Models\Appointment::class);
     }
