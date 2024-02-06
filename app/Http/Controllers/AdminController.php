@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
 use App\Models\Appointment;
 use App\Models\Blog;
 use App\Models\Service;
@@ -13,7 +14,7 @@ use App\Models\Washing_plan;
 
 class AdminController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $users = User::orderBy('created_at', 'desc')->get();
         $u_count = User::count();

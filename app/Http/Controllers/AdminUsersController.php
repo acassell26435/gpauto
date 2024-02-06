@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\UsersCreateRequest;
 use App\Http\Requests\UsersUpdateRequest;
 use App\Models\User;
@@ -59,7 +61,7 @@ class AdminUsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UsersCreateRequest $request)
+    public function store(UsersCreateRequest $request): RedirectResponse
     {
         //
         $input = $request->all();
@@ -89,7 +91,7 @@ class AdminUsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(int $id)
     {
         //
     }
@@ -100,7 +102,7 @@ class AdminUsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(int $id): View
     {
         //
         $user = User::findOrFail($id);
@@ -116,7 +118,7 @@ class AdminUsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UsersUpdateRequest $request, $id)
+    public function update(UsersUpdateRequest $request, int $id): RedirectResponse
     {
 
         $user = User::findOrFail($id);
@@ -163,7 +165,7 @@ class AdminUsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id): RedirectResponse
     {
 
         $user = User::findOrFail($id);

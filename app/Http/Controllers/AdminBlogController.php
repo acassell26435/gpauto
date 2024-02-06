@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
 use App\Models\Blog;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -13,7 +14,7 @@ class AdminBlogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         $blogs = Blog::all();
         $users = User::pluck('name', 'id')->all();
@@ -66,7 +67,7 @@ class AdminBlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(int $id)
     {
         //
     }
@@ -77,7 +78,7 @@ class AdminBlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(int $id)
     {
         //
     }
@@ -88,7 +89,7 @@ class AdminBlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id)
     {
         $request->validate([
             'img' => 'image|mimes:jpeg,png,jpg',
@@ -121,7 +122,7 @@ class AdminBlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
         $blog = Blog::findOrFail($id);
 

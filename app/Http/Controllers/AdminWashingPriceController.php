@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
 use App\Models\Vehicle_type;
 use App\Models\Washing_plan;
 use App\Models\Washing_price;
@@ -14,7 +15,7 @@ class AdminWashingPriceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         $washing_plans = Washing_plan::pluck('name', 'id')->all();
         $vehicle_types = Vehicle_type::pluck('type', 'id')->all();
@@ -54,7 +55,7 @@ class AdminWashingPriceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(int $id)
     {
         //
     }
@@ -65,7 +66,7 @@ class AdminWashingPriceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(int $id)
     {
         //
     }
@@ -76,7 +77,7 @@ class AdminWashingPriceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id)
     {
         $washing_price = Washing_price::findOrFail($id);
 
@@ -93,7 +94,7 @@ class AdminWashingPriceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
         $washing_price = Washing_price::findOrFail($id);
 

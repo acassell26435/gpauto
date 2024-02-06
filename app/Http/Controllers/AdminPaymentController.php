@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
 use App\Models\Appointment_user;
 use App\Models\Payment_mode;
 use App\Models\Washing_price;
@@ -14,7 +15,7 @@ class AdminPaymentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         $payments = Appointment_user::all();
         $washing_prices = Washing_price::all();
@@ -49,7 +50,7 @@ class AdminPaymentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(int $id)
     {
         //
     }
@@ -60,7 +61,7 @@ class AdminPaymentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(int $id)
     {
         //
     }
@@ -71,7 +72,7 @@ class AdminPaymentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id)
     {
         $payment = Appointment_user::findOrFail($id);
 
@@ -88,7 +89,7 @@ class AdminPaymentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
         $payment = Appointment_user::findOrFail($id);
 

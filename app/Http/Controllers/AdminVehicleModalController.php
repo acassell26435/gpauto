@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
 use App\Models\Vehicle_company;
 use App\Models\Vehicle_modal;
 use Illuminate\Http\Request;
@@ -13,7 +14,7 @@ class AdminVehicleModalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
 
         $vehicle_companies = Vehicle_company::pluck('vehicle_company', 'id')->all();
@@ -54,7 +55,7 @@ class AdminVehicleModalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(int $id)
     {
         //
     }
@@ -65,7 +66,7 @@ class AdminVehicleModalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(int $id)
     {
         //
     }
@@ -76,7 +77,7 @@ class AdminVehicleModalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id)
     {
         $vehicle_modal = Vehicle_modal::findOrFail($id);
 
@@ -93,7 +94,7 @@ class AdminVehicleModalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
         $vehicle_modal = Vehicle_modal::findOrFail($id);
 

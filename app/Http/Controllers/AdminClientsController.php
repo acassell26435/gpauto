@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
 use App\Models\Clients;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,7 @@ class AdminClientsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         $clients = Clients::all();
 
@@ -61,7 +62,7 @@ class AdminClientsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(int $id)
     {
         //
     }
@@ -72,7 +73,7 @@ class AdminClientsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(int $id)
     {
         //
     }
@@ -83,7 +84,7 @@ class AdminClientsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id)
     {
         $request->validate([
             'image' => 'image|mimes:jpeg,png,jpg',
@@ -112,7 +113,7 @@ class AdminClientsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
         $client = Clients::findOrFail($id);
 

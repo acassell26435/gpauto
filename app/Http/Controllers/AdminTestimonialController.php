@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,7 @@ class AdminTestimonialController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         $testimonials = Testimonial::all();
 
@@ -63,7 +64,7 @@ class AdminTestimonialController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(int $id)
     {
         //
     }
@@ -74,7 +75,7 @@ class AdminTestimonialController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(int $id)
     {
         //
     }
@@ -85,7 +86,7 @@ class AdminTestimonialController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id)
     {
         $request->validate([
             'image' => 'image|mimes:jpeg,png,jpg',
@@ -118,7 +119,7 @@ class AdminTestimonialController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
         $testimonial = Testimonial::findOrFail($id);
 

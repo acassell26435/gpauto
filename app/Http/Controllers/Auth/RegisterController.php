@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use App\Models\User;
@@ -45,7 +47,7 @@ class RegisterController extends Controller
      *
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
+    protected function validator(array $data): \Illuminate\Contracts\Validation\Validator
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
@@ -77,14 +79,14 @@ class RegisterController extends Controller
         ]);
     }
 
-    public function getRegister()
+    public function getRegister(): View
     {
         $contacts = Contact::all();
 
         return view('auth.register', compact('contacts'));
     }
 
-    public function postLogin(Request $request)
+    public function postLogin(Request $request): RedirectResponse
     {
         $credentials = $request->only('email', 'password');
         if (Auth::attempt(['email' => $credentials['email'], 'password' => $credentials['password']])) {

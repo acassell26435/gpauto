@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
 use App\Models\Company_social;
 use App\Models\Contact;
 use App\Models\Opening_hour;
@@ -11,7 +12,7 @@ use Mail;
 
 class contactMailController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $company_socials = Company_social::all();
         $services = Service::all();

@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
 use Illuminate\Support\Facades\Artisan;
 
 class HelpController extends Controller
 {
-    public function getremove_public()
+    public function getremove_public(): View
     {
         return view('admin.help.removepublic');
     }
@@ -40,7 +41,7 @@ class HelpController extends Controller
         }
     }
 
-    public function system_status()
+    public function system_status(): View
     {
         return view('admin.help.systemstatus');
     }

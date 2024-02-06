@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\TeamCreateRequest;
 use App\Http\Requests\TeamUpdateRequest;
 use App\Models\Social_team;
@@ -15,7 +17,7 @@ class AdminTeamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         //
         $socials = Social_team::with('teams')->get();
@@ -29,7 +31,7 @@ class AdminTeamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(): View
     {
         return view('admin.team.create');
     }
@@ -40,7 +42,7 @@ class AdminTeamController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TeamCreateRequest $request)
+    public function store(TeamCreateRequest $request): RedirectResponse
     {
         //
         $input = $request->all();
@@ -69,7 +71,7 @@ class AdminTeamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(int $id)
     {
         //
     }
@@ -80,7 +82,7 @@ class AdminTeamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(int $id): View
     {
         //
 
@@ -96,7 +98,7 @@ class AdminTeamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(TeamUpdateRequest $request, $id)
+    public function update(TeamUpdateRequest $request, int $id): RedirectResponse
     {
 
         $team = Team::findOrFail($id);
@@ -133,7 +135,7 @@ class AdminTeamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id): RedirectResponse
     {
         //
         $team = Team::findOrFail($id);

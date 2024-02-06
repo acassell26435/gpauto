@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
 use App\Models\Contact;
 use DotenvEditor;
 use Illuminate\Http\Request;
@@ -13,7 +14,7 @@ class AdminContactController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         $contacts = Contact::first();
 
@@ -67,7 +68,7 @@ class AdminContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(int $id)
     {
         //
     }
@@ -78,7 +79,7 @@ class AdminContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit(): View
     {
         $contacts = Contact::first();
 
@@ -91,7 +92,7 @@ class AdminContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id)
     {
         $request->validate([
             'logo' => 'image|mimes:jpeg,png,jpg',
@@ -147,7 +148,7 @@ class AdminContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
         $contact = Contact::findOrFail($id);
 
@@ -158,7 +159,7 @@ class AdminContactController extends Controller
         return back()->with('deleted', 'Record Has Been Deleted');
     }
 
-    public function mail_setting()
+    public function mail_setting(): View
     {
         $env_files = [
             'MAIL_FROM_NAME' => env('MAIL_FROM_NAME'),
@@ -197,7 +198,7 @@ class AdminContactController extends Controller
 
     }
 
-    public function mailchimp_setting()
+    public function mailchimp_setting(): View
     {
         $env_files = [
             'MAILCHIMP_API_KEY' => env('MAILCHIMP_API_KEY'),

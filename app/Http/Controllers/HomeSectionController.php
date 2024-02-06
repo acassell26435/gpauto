@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
 use App\Models\HomeSection;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,7 @@ class HomeSectionController extends Controller
         $this->homeSection = HomeSection::query();
     }
 
-    public function index()
+    public function index(): View
     {
         $homesection = $this->homeSection->first();
 

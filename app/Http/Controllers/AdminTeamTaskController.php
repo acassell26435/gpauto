@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
 use App\Models\Status;
 use App\Models\Team;
 use App\Models\Team_task;
@@ -15,7 +16,7 @@ class AdminTeamTaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         $users = User::pluck('name', 'id')->all();
         $teams = Team::pluck('name', 'id')->all();
@@ -55,7 +56,7 @@ class AdminTeamTaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(int $id)
     {
         //
     }
@@ -66,7 +67,7 @@ class AdminTeamTaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(int $id)
     {
         //
     }
@@ -77,7 +78,7 @@ class AdminTeamTaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id)
     {
         $task = Team_task::findOrFail($id);
 
@@ -94,7 +95,7 @@ class AdminTeamTaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
         $task = Team_task::findOrFail($id);
 

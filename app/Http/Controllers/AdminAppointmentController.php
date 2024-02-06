@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
 use App\Models\Appointment;
 use App\Models\Status;
 use App\Models\User;
@@ -21,7 +22,7 @@ class AdminAppointmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
 
         $users = User::pluck('name', 'id')->all();
@@ -109,7 +110,7 @@ class AdminAppointmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(int $id)
     {
         //
     }
@@ -120,7 +121,7 @@ class AdminAppointmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(int $id)
     {
         //
     }
@@ -131,7 +132,7 @@ class AdminAppointmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id)
     {
         $appointment = Appointment::findOrFail($id);
 
@@ -150,7 +151,7 @@ class AdminAppointmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
         $appointment = Appointment::findOrFail($id);
 
@@ -159,7 +160,7 @@ class AdminAppointmentController extends Controller
         return back()->with('deleted', 'Appointment Has Been Deleted');
     }
 
-    public function report(Request $request)
+    public function report(Request $request): View
     {
 
         return view('admin.report');

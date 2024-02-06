@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
 use App\Models\SocialLogin;
 use DotenvEditor;
 use Illuminate\Http\Request;
 
 class SocialLoginController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $social_login = SocialLogin::first();
         $env_files = [
@@ -24,7 +25,7 @@ class SocialLoginController extends Controller
         return view('admin.sociallogin.index', compact('social_login', 'env_files'));
     }
 
-    public function facebook()
+    public function facebook(): View
     {
         $env_files = [
             'FACEBOOK_CLIENT_ID' => env('FACEBOOK_CLIENT_ID') ? env('FACEBOOK_CLIENT_ID') : '',

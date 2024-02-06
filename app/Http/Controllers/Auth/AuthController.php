@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Auth;
@@ -14,7 +15,7 @@ class AuthController extends Controller
      *
      * @return Response
      */
-    public function redirectToProvider($provider)
+    public function redirectToProvider($provider): Response
     {
         return Socialite::driver($provider)->redirect();
     }
@@ -27,7 +28,7 @@ class AuthController extends Controller
      *
      * @return Response
      */
-    public function handleProviderCallback($provider)
+    public function handleProviderCallback($provider): RedirectResponse
     {
 
         try {
@@ -52,7 +53,7 @@ class AuthController extends Controller
      * @param $provider Social auth provider
      * @return  User
      */
-    public function findOrCreateUser($user, $provider)
+    public function findOrCreateUser($user, $provider): User
     {
         if ($user->email == null) {
             $user->email = $user->id.'@facebook.com';
