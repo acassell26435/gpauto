@@ -1,8 +1,14 @@
 <?php
 
+use App\Company_social;
+use App\Contact;
+use App\Gallery;
+use App\Http\Controllers\AdminAppointmentController;
 use App\Http\Controllers\AdminBlogController;
 use App\Http\Controllers\AdminClientsController;
 use App\Http\Controllers\AdminCompanySocialController;
+use App\Http\Controllers\AdminContactController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminFactsController;
 use App\Http\Controllers\AdminGalleryController;
 use App\Http\Controllers\AdminOpeningHoursController;
@@ -21,22 +27,15 @@ use App\Http\Controllers\AdminVehicleTypeController;
 use App\Http\Controllers\AdminWashingIncludeController;
 use App\Http\Controllers\AdminWashingPlanController;
 use App\Http\Controllers\AdminWashingPriceController;
-use App\Http\Controllers\HomeSliderController;
-use App\Http\Controllers\AdminAppointmentController;
-use App\Http\Controllers\AdminContactController;
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth;
+use App\Http\Controllers\contactMailController;
 use App\Http\Controllers\HelpController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\HomeSectionController;
+use App\Http\Controllers\HomeSliderController;
 use App\Http\Controllers\MailChimpController;
 use App\Http\Controllers\PWAController;
 use App\Http\Controllers\SocialLoginController;
-use App\Http\Controllers\contactMailController;
-use Illuminate\Support\Facades\Route;
-use App\Company_social;
-use App\Contact;
-use App\Gallery;
 use App\Opening_hour;
 use App\Service;
 use App\Social_team;
@@ -45,6 +44,7 @@ use App\Vehicle_type;
 use App\Washing_plan;
 use App\Washing_plan_include;
 use App\Washing_price;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
