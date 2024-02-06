@@ -37,21 +37,21 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Create Status</h4>
         </div>
-        {!! Form::open(['method' => 'POST', 'action' => 'AdminTaskStatusController@store']) !!}
+        {{ html()->form('POST', action('AdminTaskStatusController@store'))->open() }}
           <div class="modal-body">
             <div class="form-group{{ $errors->has('status') ? ' has-error' : '' }}">
-                {!! Form::label('status', 'Status Name') !!}
-                {!! Form::text('status', null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'eg: pending, complete']) !!}
+                {{ html()->label('Status Name', 'status') }}
+                {{ html()->text('status')->class('form-control')->required()->placeholder('eg: pending, complete') }}
                 <small class="text-danger">{{ $errors->first('status') }}</small>
             </div>
           </div>
           <div class="modal-footer">
             <div class="btn-group pull-right">
-              {!! Form::reset("Reset", ['class' => 'btn btn-yellow btn-default']) !!}
-              {!! Form::submit("Add Status", ['class' => 'btn btn-default btn-add']) !!}
+              {{ html()->reset("Reset", ['class' => 'btn btn-yellow btn-default']) }}
+              {{ html()->submit("Add Status")->class('btn btn-default btn-add') }}
             </div>
           </div>
-        {!! Form::close() !!}
+        {{ html()->form()->close() }}
       </div>
     </div>
   </div>
@@ -89,20 +89,20 @@
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Edit Status</h4>
                       </div>
-                      {!! Form::model($status, ['method' => 'PATCH', 'action' => ['AdminTaskStatusController@update', $status->id]]) !!}
+                      {{ html()->modelForm($status, 'PATCH', action('AdminTaskStatusController@update', [$status->id]))->open() }}
                         <div class="modal-body">
                           <div class="form-group{{ $errors->has('status') ? ' has-error' : '' }}">
-                              {!! Form::label('status', 'Status Name') !!}
-                              {!! Form::text('status', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                              {{ html()->label('Status Name', 'status') }}
+                              {{ html()->text('status')->class('form-control')->required() }}
                               <small class="text-danger">{{ $errors->first('status') }}</small>
                           </div>
                         </div>
                         <div class="modal-footer">
                           <div class="btn-group pull-right">
-                            {!! Form::submit("Update", ['class' => 'btn btn-default btn-add']) !!}
+                            {{ html()->submit("Update")->class('btn btn-default btn-add') }}
                           </div>
                         </div>
-                      {!! Form::close() !!}
+                      {{ html()->closeModelForm() }}
                     </div>
                   </div>
                 </div>
@@ -122,10 +122,10 @@
                         <p>Do you really want to delete these records? This process cannot be undone.</p>
                       </div>
                       <div class="modal-footer">
-                        {!! Form::open(['method' => 'DELETE', 'action' => ['AdminTaskStatusController@destroy', $status->id]]) !!}
-                            {!! Form::reset("No", ['class' => 'btn btn-gray', 'data-dismiss' => 'modal']) !!}
-                            {!! Form::submit("Yes", ['class' => 'btn btn-danger']) !!}
-                        {!! Form::close() !!}
+                        {{ html()->form('DELETE', action('AdminTaskStatusController@destroy', [$status->id]))->open() }}
+                            {{ html()->reset("No", ['class' => 'btn btn-gray', 'data-dismiss' => 'modal']) }}
+                            {{ html()->submit("Yes")->class('btn btn-danger') }}
+                        {{ html()->form()->close() }}
                       </div>
                     </div>
                   </div>

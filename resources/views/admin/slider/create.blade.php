@@ -51,11 +51,11 @@
          <div class="form-group{{ $errors->has('button1') ? ' has-error' : '' }} switch-main-block">
             <div class="row">
               <div class="col-xs-4">
-                {!! Form::label('button1', 'Button1') !!}
+                {{ html()->label('Button1', 'button1') }}
               </div>
               <div class="col-xs-5 pad-0">
                 <label class="switch">                
-                  {!! Form::checkbox('button1', 1, null, ['class' => 'checkbox-switch', 'id'=>'button1_enable']) !!}
+                  {{ html()->checkbox('button1', null, 1)->class('checkbox-switch')->id('button1_enable') }}
                   <span class="slider round"></span>
                 </label>
               </div>
@@ -79,11 +79,11 @@
           <div class="form-group{{ $errors->has('button1') ? ' has-error' : '' }} switch-main-block">
             <div class="row">
               <div class="col-xs-4">
-                {!! Form::label('button2', 'Button2') !!}
+                {{ html()->label('Button2', 'button2') }}
               </div>
               <div class="col-xs-5 pad-0">
                 <label class="switch">                
-                  {!! Form::checkbox('button2', 1, null, ['class' => 'checkbox-switch', 'id'=>'button2_enable']) !!}
+                  {{ html()->checkbox('button2', null, 1)->class('checkbox-switch')->id('button2_enable') }}
                   <span class="slider round"></span>
                 </label>
               </div>

@@ -37,30 +37,30 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Create Task</h4>
         </div>
-        {!! Form::open(['method' => 'POST', 'action' => 'AdminTeamTaskController@store']) !!}
+        {{ html()->form('POST', action('AdminTeamTaskController@store'))->open() }}
           <div class="modal-body">
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group{{ $errors->has('team_id') ? ' has-error' : '' }}">
-                  {!! Form::label('team_id', 'Team Member') !!}
-                  {!! Form::select('team_id', array(''=>'Choose Member') + $teams, null, ['class' => 'form-control select2', 'required' => 'required']) !!}
+                  {{ html()->label('Team Member', 'team_id') }}
+                  {{ html()->select('team_id', array('' => 'Choose Member') + $teams)->class('form-control select2')->required() }}
                   <small class="text-danger">{{ $errors->first('team_id') }}</small>
                 </div>
                 <div class="form-group{{ $errors->has('user_id') ? ' has-error' : '' }}">
-                  {!! Form::label('user_id', 'Customer') !!}
-                  {!! Form::select('user_id', array(''=>'Choose Customer') + $users, null, ['class' => 'form-control select2', 'required' => 'required']) !!}
+                  {{ html()->label('Customer', 'user_id') }}
+                  {{ html()->select('user_id', array('' => 'Choose Customer') + $users)->class('form-control select2')->required() }}
                   <small class="text-danger">{{ $errors->first('user_id') }}</small>
                 </div>
                 <div class="form-group{{ $errors->has('status_id') ? ' has-error' : '' }}">
-                  {!! Form::label('status_id', 'Status') !!}
-                  {!! Form::select('status_id', array('0'=>'Choose Status') + $statuses, null, ['class' => 'form-control select2']) !!}
+                  {{ html()->label('Status', 'status_id') }}
+                  {{ html()->select('status_id', array('0' => 'Choose Status') + $statuses)->class('form-control select2') }}
                   <small class="text-danger">{{ $errors->first('status_id') }}</small>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group{{ $errors->has('task') ? ' has-error' : '' }}">
-                  {!! Form::label('task', 'Task') !!}
-                  {!! Form::textarea('task', null, ['class' => 'form-control', 'rows'=>'9', 'required' => 'required', 'placeholder'=>'Create Task']) !!}
+                  {{ html()->label('Task', 'task') }}
+                  {{ html()->textarea('task')->class('form-control')->rows('9')->required()->placeholder('Create Task') }}
                   <small class="text-danger">{{ $errors->first('task') }}</small>
                 </div>
               </div>
@@ -68,11 +68,11 @@
           </div>
           <div class="modal-footer">
             <div class="btn-group pull-right">
-              {!! Form::reset("Reset", ['class' => 'btn btn-yellow btn-default']) !!}
-              {!! Form::submit("Add Task", ['class' => 'btn btn-add btn-default']) !!}
+              {{ html()->reset("Reset", ['class' => 'btn btn-yellow btn-default']) }}
+              {{ html()->submit("Add Task")->class('btn btn-add btn-default') }}
             </div>
           </div>
-        {!! Form::close() !!}
+        {{ html()->form()->close() }}
       </div>
     </div>
   </div>
@@ -122,30 +122,30 @@
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Edit Task</h4>
                       </div>
-                      {!! Form::model($task, ['method' => 'PATCH', 'action' => ['AdminTeamTaskController@update', $task->id]]) !!}
+                      {{ html()->modelForm($task, 'PATCH', action('AdminTeamTaskController@update', [$task->id]))->open() }}
                         <div class="modal-body">
                           <div class="row">
                             <div class="col-md-6">
                               <div class="form-group{{ $errors->has('team_id') ? ' has-error' : '' }}">
-                                {!! Form::label('team_id', 'Team Member') !!}
-                                {!! Form::select('team_id', array(''=>'Choose Member') + $teams, null, ['class' => 'form-control select2', 'required' => 'required']) !!}
+                                {{ html()->label('Team Member', 'team_id') }}
+                                {{ html()->select('team_id', array('' => 'Choose Member') + $teams)->class('form-control select2')->required() }}
                                 <small class="text-danger">{{ $errors->first('team_id') }}</small>
                               </div>
                               <div class="form-group{{ $errors->has('user_id') ? ' has-error' : '' }}">
-                                {!! Form::label('user_id', 'Customer') !!}
-                                {!! Form::select('user_id', array(''=>'Choose Customer') + $users, null, ['class' => 'form-control select2', 'required' => 'required']) !!}
+                                {{ html()->label('Customer', 'user_id') }}
+                                {{ html()->select('user_id', array('' => 'Choose Customer') + $users)->class('form-control select2')->required() }}
                                 <small class="text-danger">{{ $errors->first('user_id') }}</small>
                               </div>
                               <div class="form-group{{ $errors->has('status_id') ? ' has-error' : '' }}">
-                                {!! Form::label('status_id', 'Status') !!}
-                                {!! Form::select('status_id', array('0'=>'Choose Status') + $statuses, null, ['class' => 'form-control select2']) !!}
+                                {{ html()->label('Status', 'status_id') }}
+                                {{ html()->select('status_id', array('0' => 'Choose Status') + $statuses)->class('form-control select2') }}
                                 <small class="text-danger">{{ $errors->first('status_id') }}</small>
                               </div>
                             </div>
                             <div class="col-md-6">
                               <div class="form-group{{ $errors->has('task') ? ' has-error' : '' }}">
-                                {!! Form::label('task', 'Task') !!}
-                                {!! Form::textarea('task', null, ['class' => 'form-control', 'rows'=>'9', 'required' => 'required', 'placeholder'=>'Create Task']) !!}
+                                {{ html()->label('Task', 'task') }}
+                                {{ html()->textarea('task')->class('form-control')->rows('9')->required()->placeholder('Create Task') }}
                                 <small class="text-danger">{{ $errors->first('task') }}</small>
                               </div>
                             </div>
@@ -153,10 +153,10 @@
                         </div>
                         <div class="modal-footer">
                           <div class="btn-group pull-right">
-                            {!! Form::submit("Update", ['class' => 'btn btn-add btn-default']) !!}
+                            {{ html()->submit("Update")->class('btn btn-add btn-default') }}
                           </div>
                         </div>
-                      {!! Form::close() !!}
+                      {{ html()->closeModelForm() }}
                     </div>
                   </div>
                 </div>
@@ -176,10 +176,10 @@
                         <p>Do you really want to delete these records? This process cannot be undone.</p>
                       </div>
                       <div class="modal-footer">
-                        {!! Form::open(['method' => 'DELETE', 'action' => ['AdminTeamTaskController@destroy', $task->id]]) !!}
-                            {!! Form::reset("No", ['class' => 'btn btn-gray', 'data-dismiss' => 'modal']) !!}
-                            {!! Form::submit("Yes", ['class' => 'btn btn-danger']) !!}
-                        {!! Form::close() !!}
+                        {{ html()->form('DELETE', action('AdminTeamTaskController@destroy', [$task->id]))->open() }}
+                            {{ html()->reset("No", ['class' => 'btn btn-gray', 'data-dismiss' => 'modal']) }}
+                            {{ html()->submit("Yes")->class('btn btn-danger') }}
+                        {{ html()->form()->close() }}
                       </div>
                     </div>
                   </div>

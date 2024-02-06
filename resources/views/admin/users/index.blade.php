@@ -82,10 +82,10 @@
                         <p>Do you really want to delete these records? This process cannot be undone.</p>
                       </div>
                       <div class="modal-footer">
-                        {!! Form::open(['method' => 'DELETE', 'action' => ['AdminUsersController@destroy', $user->id]]) !!}
-                          {!! Form::reset("No", ['class' => 'btn btn-gray', 'data-dismiss'=>'modal']) !!}
-                          {!! Form::submit("Yes", ['class' => 'btn btn-danger']) !!}
-                        {!! Form::close() !!}
+                        {{ html()->form('DELETE', action('AdminUsersController@destroy', [$user->id]))->open() }}
+                          {{ html()->reset("No", ['class' => 'btn btn-gray', 'data-dismiss' => 'modal']) }}
+                          {{ html()->submit("Yes")->class('btn btn-danger') }}
+                        {{ html()->form()->close() }}
                       </div>
                     </div>
                   </div>

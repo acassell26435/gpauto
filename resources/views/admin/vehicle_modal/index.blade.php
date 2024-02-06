@@ -36,20 +36,20 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Create Vehicle Modal</h4>
         </div>
-        {!! Form::open(['method' => 'POST', 'action' => 'AdminVehicleModalController@store']) !!}
+        {{ html()->form('POST', action('AdminVehicleModalController@store'))->open() }}
           <div class="modal-body">
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group{{ $errors->has('vehicle_company_id') ? ' has-error' : '' }}">
-                  {!! Form::label('vehicle_company_id', 'Vehicle Company') !!}
-                  {!! Form::select('vehicle_company_id', array(''=>'Select Vehicle Company') + $vehicle_companies, null, ['class' => 'form-control select2', 'required' => 'required']) !!}
+                  {{ html()->label('Vehicle Company', 'vehicle_company_id') }}
+                  {{ html()->select('vehicle_company_id', array('' => 'Select Vehicle Company') + $vehicle_companies)->class('form-control select2')->required() }}
                   <small class="text-danger">{{ $errors->first('vehicle_company_id') }}</small>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group{{ $errors->has('vehicle_modal') ? ' has-error' : '' }}">
-                  {!! Form::label('vehicle_modal', 'Vehicle Modal') !!}
-                  {!! Form::text('vehicle_modal', null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'Enter Modal']) !!}
+                  {{ html()->label('Vehicle Modal', 'vehicle_modal') }}
+                  {{ html()->text('vehicle_modal')->class('form-control')->required()->placeholder('Enter Modal') }}
                   <small class="text-danger">{{ $errors->first('vehicle_modal') }}</small>
                 </div>
               </div>
@@ -57,11 +57,11 @@
           </div>
           <div class="modal-footer">
             <div class="btn-group pull-right">
-              {!! Form::reset("Reset", ['class' => 'btn btn-yellow btn-default']) !!}
-              {!! Form::submit("Add Modal", ['class' => 'btn btn-default btn-add']) !!}
+              {{ html()->reset("Reset", ['class' => 'btn btn-yellow btn-default']) }}
+              {{ html()->submit("Add Modal")->class('btn btn-default btn-add') }}
             </div>
           </div>
-        {!! Form::close() !!}
+        {{ html()->form()->close() }}
       </div>
     </div>
   </div>
@@ -103,20 +103,20 @@
                           <button type="button" class="close" data-dismiss="modal">&times;</button>
                           <h4 class="modal-title">Edit Vehicle Modal</h4>
                         </div>
-                        {!! Form::model($vehicle_modal, ['method' => 'PATCH', 'action' => ['AdminVehicleModalController@update', $vehicle_modal->id]]) !!}
+                        {{ html()->modelForm($vehicle_modal, 'PATCH', action('AdminVehicleModalController@update', [$vehicle_modal->id]))->open() }}
                           <div class="modal-body">
                             <div class="row">
                               <div class="col-md-6">
                                 <div class="form-group{{ $errors->has('vehicle_company_id') ? ' has-error' : '' }}">
-                                  {!! Form::label('vehicle_company_id', 'Vehicle Company') !!}
-                                  {!! Form::select('vehicle_company_id', array(''=>'Select Vehicle Company') + $vehicle_companies, null, ['class' => 'form-control select2', 'required' => 'required']) !!}
+                                  {{ html()->label('Vehicle Company', 'vehicle_company_id') }}
+                                  {{ html()->select('vehicle_company_id', array('' => 'Select Vehicle Company') + $vehicle_companies)->class('form-control select2')->required() }}
                                   <small class="text-danger">{{ $errors->first('vehicle_company_id') }}</small>
                                 </div>
                               </div>
                               <div class="col-md-6">
                                 <div class="form-group{{ $errors->has('vehicle_modal') ? ' has-error' : '' }}">
-                                  {!! Form::label('vehicle_modal', 'Vehicle Modal') !!}
-                                  {!! Form::text('vehicle_modal', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                                  {{ html()->label('Vehicle Modal', 'vehicle_modal') }}
+                                  {{ html()->text('vehicle_modal')->class('form-control')->required() }}
                                   <small class="text-danger">{{ $errors->first('vehicle_modal') }}</small>
                                 </div>
                               </div>
@@ -124,10 +124,10 @@
                           </div>
                           <div class="modal-footer">
                             <div class="btn-group pull-right">
-                              {!! Form::submit("Update", ['class' => 'btn btn-default btn-add']) !!}
+                              {{ html()->submit("Update")->class('btn btn-default btn-add') }}
                             </div>
                           </div>
-                        {!! Form::close() !!}
+                        {{ html()->closeModelForm() }}
                       </div>
                     </div>
                   </div>
@@ -147,10 +147,10 @@
                           <p>Do you really want to delete these records? This process cannot be undone.</p>
                         </div>
                         <div class="modal-footer">
-                          {!! Form::open(['method' => 'DELETE', 'action' => ['AdminVehicleModalController@destroy', $vehicle_modal->id]]) !!}
-                              {!! Form::reset("No", ['class' => 'btn btn-gray', 'data-dismiss' => 'modal']) !!}
-                              {!! Form::submit("Yes", ['class' => 'btn btn-danger']) !!}
-                          {!! Form::close() !!}
+                          {{ html()->form('DELETE', action('AdminVehicleModalController@destroy', [$vehicle_modal->id]))->open() }}
+                              {{ html()->reset("No", ['class' => 'btn btn-gray', 'data-dismiss' => 'modal']) }}
+                              {{ html()->submit("Yes")->class('btn btn-danger') }}
+                          {{ html()->form()->close() }}
                         </div>
                       </div>
                     </div>

@@ -26,8 +26,8 @@
 
 @section('content')
   <div id="dropzone" class="box-body">
-    {!! Form::open(['id'=>'gallery-dropzone', 'method' => 'POST', 'action'=>'AdminGalleryController@store', 'class' => 'dropzone', 'files'=>true]) !!}
-    {!! Form::close() !!}
+    {{ html()->form('POST', action('AdminGalleryController@store'))->id('gallery-dropzone')->class('dropzone')->acceptsFiles()->open() }}
+    {{ html()->form()->close() }}
     <p>Upload File: jpg, jpeg, png</p>
   </div>
   <div class="box-body">
@@ -54,21 +54,21 @@
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Change Image</h4>
                       </div>
-                      {!! Form::model($gallery, ['method' => 'PATCH', 'action' => ['AdminGalleryController@update', $gallery->id], 'files' => true]) !!}
+                      {{ html()->modelForm($gallery, 'PATCH', action('AdminGalleryController@update', [$gallery->id]))->acceptsFiles()->open() }}
                         <div class="modal-body">
                           <div class="form-group{{ $errors->has('gallery_img') ? ' has-error' : '' }}">
-                            {!! Form::label('gallery_img', 'Gallery Image') !!}
-                            {!! Form::file('gallery_img', ['required' => 'required']) !!}
+                            {{ html()->label('Gallery Image', 'gallery_img') }}
+                            {{ html()->file('gallery_img')->required() }}
                             <p class="help-block">Help block text</p>
                             <small class="text-danger">{{ $errors->first('gallery_img') }}</small>
                           </div>
                         </div>
                         <div class="modal-footer">
                           <div class="btn-group pull-right">
-                            {!! Form::submit("Update", ['class' => 'btn btn-default btn-add']) !!}
+                            {{ html()->submit("Update")->class('btn btn-default btn-add') }}
                           </div>
                         </div>
-                      {!! Form::close() !!}
+                      {{ html()->closeModelForm() }}
                     </div>
                   </div>
                 </div>
@@ -86,10 +86,10 @@
                         <p>Do you really want to delete these records? This process cannot be undone.</p>
                       </div>
                       <div class="modal-footer">
-                        {!! Form::open(['method' => 'DELETE', 'action' => ['AdminGalleryController@destroy', $gallery->id]]) !!}
-                            {!! Form::reset("No", ['class' => 'btn btn-gray', 'data-dismiss'=>'modal']) !!}
-                            {!! Form::submit("Yes", ['class' => 'btn btn-danger']) !!}
-                        {!! Form::close() !!}
+                        {{ html()->form('DELETE', action('AdminGalleryController@destroy', [$gallery->id]))->open() }}
+                            {{ html()->reset("No", ['class' => 'btn btn-gray', 'data-dismiss' => 'modal']) }}
+                            {{ html()->submit("Yes")->class('btn btn-danger') }}
+                        {{ html()->form()->close() }}
                       </div>
                     </div>
                   </div>

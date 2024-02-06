@@ -42,7 +42,7 @@ input[type=date]::-webkit-inner-spin-button {
 </style>
 @section('content')
 <div class="teams-table-block table-responsive">
-    {!! Form::open(['method' => 'GET', 'action' => 'AdminAppointmentController@downloadPDF']) !!}
+    {{ html()->form('GET', action('AdminAppointmentController@downloadPDF'))->open() }}
 
 
     <div class="col-sm-2 pull-right form-group{{ $errors->has('date') ? ' has-error' : '' }}">

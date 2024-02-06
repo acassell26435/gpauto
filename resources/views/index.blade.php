@@ -364,33 +364,33 @@
             <div class="appointment-block">
               <h3 class="section-heading">Get an Appointment</h3>
               <p class="sub-heading">Etiam imperdiet imperdiet orci nunc nec neque phasellus leo dolor tempus non auctor.</p>
-              {!! Form::open(['method' => 'POST', 'action' => 'HomePageController@store', 'class' => 'appointment-form']) !!}
+              {{ html()->form('POST', action('HomePageController@store'))->class('appointment-form')->open() }}
                 <h5 class="form-heading-title"><span class="form-heading-no">1.</span>Vehicle Information</h5>
                 <div class="row">
                   <div class="col-sm-6">
                     @if (Auth::check())
-                      {!! Form::hidden('user_id', Auth::user()->id) !!}
+                      {{ html()->hidden('user_id', Auth::user()->id) }}
                     @endif
                     <div class="form-group{{ $errors->has('washing_plan_id') ? ' has-error' : '' }}">
-                        {!! Form::select('washing_plan_id', array(''=>'Choose Washing Plan') + $washing_plan_lists, null, ['class' => 'form-control select2', 'required' => 'required']) !!}
+                        {{ html()->select('washing_plan_id', array('' => 'Choose Washing Plan') + $washing_plan_lists)->class('form-control select2')->required() }}
                         <small class="text-danger">{{ $errors->first('washing_plan_id') }}</small>
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group{{ $errors->has('vehicle_company_id') ? ' has-error' : '' }}">
-                        {!! Form::select('vehicle_company_id', array(''=>'Choose Vehicle Company') + $vehicle_company_lists, null, ['class' => 'form-control select2', 'required' => 'required']) !!}
+                        {{ html()->select('vehicle_company_id', array('' => 'Choose Vehicle Company') + $vehicle_company_lists)->class('form-control select2')->required() }}
                         <small class="text-danger">{{ $errors->first('vehicle_company_id') }}</small>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group{{ $errors->has('vehicle_modal_id') ? ' has-error' : '' }}">
-                      {!! Form::select('vehicle_modal_id', array('' =>'Choose Vehicle Modal') + $vehicle_modal_lists , null, ['class' => 'form-control select2', 'required' => 'required']) !!}
+                      {{ html()->select('vehicle_modal_id', array('' => 'Choose Vehicle Modal') + $vehicle_modal_lists)->class('form-control select2')->required() }}
                       <small class="text-danger">{{ $errors->first('vehicle_modal_id') }}</small>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group{{ $errors->has('vehicle_types_id') ? ' has-error' : '' }}">
-                        {!! Form::select('vehicle_types_id', array(''=>'Choose Vehicle Type') + $vehicle_type_lists, null, ['class' => 'form-control select2', 'required' => 'required']) !!}
+                        {{ html()->select('vehicle_types_id', array('' => 'Choose Vehicle Type') + $vehicle_type_lists)->class('form-control select2')->required() }}
                         <small class="text-danger">{{ $errors->first('vehicle_types_id') }}</small>
                     </div>
                   </div>
@@ -399,13 +399,13 @@
                   <h5 class="form-heading-title"><span class="form-heading-no">2.</span>Appointment Information</h5>
                   <div class="col-sm-6">
                     <div class="form-group{{ $errors->has('appointment_date') ? ' has-error' : '' }}">
-                        {!! Form::text('appointment_date', null, ['class' => 'form-control date-pick', 'required' => 'required', 'placeholder' => 'Appointment Date']) !!}
+                        {{ html()->text('appointment_date')->class('form-control date-pick')->required()->placeholder('Appointment Date') }}
                         <small class="text-danger">{{ $errors->first('appointment_date') }}</small>
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group{{ $errors->has('time_frame') ? ' has-error' : '' }}">
-                        {!! Form::select('time_frame', array(''=>'Choose Time Frame', 'morning'=>'Morning', 'evening'=>'Evening', 'afternoon'=>'Afternoon'), null, ['class' => 'form-control select2', 'required' => 'required']) !!}
+                        {{ html()->select('time_frame', array('' => 'Choose Time Frame', 'morning' => 'Morning', 'evening' => 'Evening', 'afternoon' => 'Afternoon'))->class('form-control select2')->required() }}
                         <small class="text-danger">{{ $errors->first('time_frame') }}</small>
                     </div>
                   </div>
@@ -415,36 +415,36 @@
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                          {!! Form::text('name', null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'Enter Your Name']) !!}
+                          {{ html()->text('name')->class('form-control')->required()->placeholder('Enter Your Name') }}
                           <small class="text-danger">{{ $errors->first('name') }}</small>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                          {!! Form::email('email', null, ['class' => 'form-control', 'required' => 'required', 'placeholder' => 'eg: foo@bar.com']) !!}
+                          {{ html()->email('email')->class('form-control')->attribute('required', 'required')->attribute('placeholder', 'eg: foo@bar.com') }}
                           <small class="text-danger">{{ $errors->first('email') }}</small>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                          {!! Form::password('password', ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'Enter Your Password']) !!}
+                          {{ html()->password('password')->class('form-control')->attribute('required', 'required')->attribute('placeholder', 'Enter Your Password') }}
                           <small class="text-danger">{{ $errors->first('password') }}</small>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group{{ $errors->has('mobile') ? ' has-error' : '' }}">
-                          {!! Form::text('mobile', null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'Enter Mobile No.']) !!}
+                          {{ html()->text('mobile')->class('form-control')->required()->placeholder('Enter Mobile No.') }}
                           <small class="text-danger">{{ $errors->first('mobile') }}</small>
                       </div>
-                      {!! Form::hidden('sex', '-') !!}
-                      {!! Form::hidden('dob', Carbon\Carbon::now()) !!}
+                      {{ html()->hidden('sex', '-') }}
+                      {{ html()->hidden('dob', Carbon\Carbon::now()) }}
                     </div>
                   </div>
                 @endif
                 <div class="pull-right">
-                  {!! Form::submit("Book Now", ['class' => 'btn btn-default pull-right']) !!}
+                  {{ html()->submit("Book Now")->class('btn btn-default pull-right') }}
                 </div>
-              {!! Form::close() !!}
+              {{ html()->form()->close() }}
             </div>
           </div>
         </div>

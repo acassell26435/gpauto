@@ -37,31 +37,31 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Create Testimonial</h4>
         </div>
-        {!! Form::open(['method' => 'POST', 'action' => 'AdminTestimonialController@store', 'files'=>true]) !!}
+        {{ html()->form('POST', action('AdminTestimonialController@store'))->acceptsFiles()->open() }}
           <div class="modal-body">
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                  {!! Form::label('name', 'Name') !!}
-                  {!! Form::text('name', null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'Enter Name']) !!}
+                  {{ html()->label('Name', 'name') }}
+                  {{ html()->text('name')->class('form-control')->required()->placeholder('Enter Name') }}
                   <small class="text-danger">{{ $errors->first('name') }}</small>
                 </div>
                 <div class="form-group{{ $errors->has('post') ? ' has-error' : '' }}">
-                  {!! Form::label('post', 'Post') !!}
-                  {!! Form::text('post', null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'Enter Post']) !!}
+                  {{ html()->label('Post', 'post') }}
+                  {{ html()->text('post')->class('form-control')->required()->placeholder('Enter Post') }}
                   <small class="text-danger">{{ $errors->first('post') }}</small>
                 </div>
                 <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
-                  {!! Form::label('image', 'Client Image') !!}
-                  {!! Form::file('image') !!}
+                  {{ html()->label('Client Image', 'image') }}
+                  {{ html()->file('image') }}
                   <p class="help-block">Help block text</p>
                   <small class="text-danger">{{ $errors->first('image') }}</small>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group{{ $errors->has('detail') ? ' has-error' : '' }}">
-                  {!! Form::label('detail', 'Detail') !!}
-                  {!! Form::textarea('detail', null, ['class' => 'form-control', 'rows'=>'9', 'required' => 'required', 'placeholder'=>'Enter Details']) !!}
+                  {{ html()->label('Detail', 'detail') }}
+                  {{ html()->textarea('detail')->class('form-control')->rows('9')->required()->placeholder('Enter Details') }}
                   <small class="text-danger">{{ $errors->first('detail') }}</small>
                 </div>
               </div>
@@ -69,11 +69,11 @@
           </div>
           <div class="modal-footer">
             <div class="btn-group pull-right">
-              {!! Form::reset("Reset", ['class' => 'btn btn-yellow btn-default']) !!}
-              {!! Form::submit("Add Testimonial", ['class' => 'btn btn-default btn-add']) !!}
+              {{ html()->reset("Reset", ['class' => 'btn btn-yellow btn-default']) }}
+              {{ html()->submit("Add Testimonial")->class('btn btn-default btn-add') }}
             </div>
           </div>
-        {!! Form::close() !!}
+        {{ html()->form()->close() }}
       </div>
     </div>
   </div>
@@ -118,31 +118,31 @@
                           <button type="button" class="close" data-dismiss="modal">&times;</button>
                           <h4 class="modal-title">Edit Testimonial</h4>
                         </div>
-                        {!! Form::model($testimonial, ['method' => 'PATCH', 'action' => ['AdminTestimonialController@update', $testimonial->id], 'files'=>true]) !!}
+                        {{ html()->modelForm($testimonial, 'PATCH', action('AdminTestimonialController@update', [$testimonial->id]))->acceptsFiles()->open() }}
                           <div class="modal-body">
                             <div class="row">
                               <div class="col-md-6">
                                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                  {!! Form::label('name', 'Name') !!}
-                                  {!! Form::text('name', null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'Enter Name']) !!}
+                                  {{ html()->label('Name', 'name') }}
+                                  {{ html()->text('name')->class('form-control')->required()->placeholder('Enter Name') }}
                                   <small class="text-danger">{{ $errors->first('name') }}</small>
                                 </div>
                                 <div class="form-group{{ $errors->has('post') ? ' has-error' : '' }}">
-                                  {!! Form::label('post', 'Post') !!}
-                                  {!! Form::text('post', null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'Enter Post']) !!}
+                                  {{ html()->label('Post', 'post') }}
+                                  {{ html()->text('post')->class('form-control')->required()->placeholder('Enter Post') }}
                                   <small class="text-danger">{{ $errors->first('post') }}</small>
                                 </div>
                                 <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
-                                  {!! Form::label('image', 'Client Image') !!}
-                                  {!! Form::file('image') !!}
+                                  {{ html()->label('Client Image', 'image') }}
+                                  {{ html()->file('image') }}
                                   <p class="help-block">Help block text</p>
                                   <small class="text-danger">{{ $errors->first('image') }}</small>
                                 </div>
                               </div>
                               <div class="col-md-6">
                                 <div class="form-group{{ $errors->has('detail') ? ' has-error' : '' }}">
-                                  {!! Form::label('detail', 'Detail') !!}
-                                  {!! Form::textarea('detail', null, ['class' => 'form-control', 'rows'=>'9', 'required' => 'required', 'placeholder'=>'Enter Details']) !!}
+                                  {{ html()->label('Detail', 'detail') }}
+                                  {{ html()->textarea('detail')->class('form-control')->rows('9')->required()->placeholder('Enter Details') }}
                                   <small class="text-danger">{{ $errors->first('detail') }}</small>
                                 </div>
                               </div>
@@ -150,10 +150,10 @@
                           </div>
                           <div class="modal-footer">
                             <div class="btn-group pull-right">
-                              {!! Form::submit("Update", ['class' => 'btn btn-default btn-add']) !!}
+                              {{ html()->submit("Update")->class('btn btn-default btn-add') }}
                             </div>
                           </div>
-                        {!! Form::close() !!}
+                        {{ html()->closeModelForm() }}
                       </div>
                     </div>
                   </div>
@@ -172,10 +172,10 @@
                           <p>Do you really want to delete these records? This process cannot be undone.</p>
                         </div>
                         <div class="modal-footer">
-                          {!! Form::open(['method' => 'DELETE', 'action' => ['AdminTestimonialController@destroy', $testimonial->id]]) !!}
-                              {!! Form::reset("No", ['class' => 'btn btn-gray', 'data-dismiss' => 'modal']) !!}
-                              {!! Form::submit("Yes", ['class' => 'btn btn-danger']) !!}
-                          {!! Form::close() !!}
+                          {{ html()->form('DELETE', action('AdminTestimonialController@destroy', [$testimonial->id]))->open() }}
+                              {{ html()->reset("No", ['class' => 'btn btn-gray', 'data-dismiss' => 'modal']) }}
+                              {{ html()->submit("Yes")->class('btn btn-danger') }}
+                          {{ html()->form()->close() }}
                         </div>
                       </div>
                     </div>

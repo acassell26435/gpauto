@@ -37,32 +37,32 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Create Blog</h4>
         </div>
-        {!! Form::open(['method' => 'POST', 'action' => 'AdminBlogController@store', 'files'=>true]) !!}
+        {{ html()->form('POST', action('AdminBlogController@store'))->acceptsFiles()->open() }}
           <div class="modal-body">
             <div class="row">
               <div class="col-md-6">
-                {!! Form::hidden('user_id', Auth::user()->id) !!}
+                {{ html()->hidden('user_id', Auth::user()->id) }}
                 <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
-                  {!! Form::label('title', 'Title') !!}
-                  {!! Form::text('title', null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'Enter Blog Title']) !!}
+                  {{ html()->label('Title', 'title') }}
+                  {{ html()->text('title')->class('form-control')->required()->placeholder('Enter Blog Title') }}
                   <small class="text-danger">{{ $errors->first('title') }}</small>
                 </div>
                 <div class="form-group{{ $errors->has('date') ? ' has-error' : '' }}">
-                    {!! Form::label('date', 'Date') !!}
-                    {!! Form::date('date', null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'Enter Date']) !!}
+                    {{ html()->label('Date', 'date') }}
+                    {{ html()->date('date')->class('form-control')->attribute('required', 'required')->attribute('placeholder', 'Enter Date') }}
                     <small class="text-danger">{{ $errors->first('date') }}</small>
                 </div>
                 <div class="form-group{{ $errors->has('img') ? ' has-error' : '' }}">
-                  {!! Form::label('img', 'Image') !!}
-                  {!! Form::file('img') !!}
+                  {{ html()->label('Image', 'img') }}
+                  {{ html()->file('img') }}
                   <p class="help-block">Help block text</p>
                   <small class="text-danger">{{ $errors->first('img') }}</small>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group{{ $errors->has('dtl') ? ' has-error' : '' }}">
-                  {!! Form::label('dtl', 'Detail') !!}
-                  {!! Form::textarea('dtl', null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'Enter Details']) !!}
+                  {{ html()->label('Detail', 'dtl') }}
+                  {{ html()->textarea('dtl')->class('form-control')->required()->placeholder('Enter Details') }}
                   <small class="text-danger">{{ $errors->first('dtl') }}</small>
                 </div>
               </div>
@@ -70,11 +70,11 @@
           </div>
           <div class="modal-footer">
             <div class="btn-group pull-right">
-              {!! Form::reset("Reset", ['class' => 'btn btn-default btn-yellow']) !!}
-              {!! Form::submit("Add Blog", ['class' => 'btn btn-default btn-add']) !!}
+              {{ html()->reset("Reset", ['class' => 'btn btn-default btn-yellow']) }}
+              {{ html()->submit("Add Blog")->class('btn btn-default btn-add') }}
             </div>
           </div>
-        {!! Form::close() !!}
+        {{ html()->form()->close() }}
       </div>
     </div>
   </div>
@@ -120,32 +120,32 @@
                           <button type="button" class="close" data-dismiss="modal">&times;</button>
                           <h4 class="modal-title">Edit Blog</h4>
                         </div>
-                        {!! Form::model($blog, ['method' => 'PATCH', 'action' => ['AdminBlogController@update', $blog->id], 'files'=>true]) !!}
+                        {{ html()->modelForm($blog, 'PATCH', action('AdminBlogController@update', [$blog->id]))->acceptsFiles()->open() }}
                           <div class="modal-body">
                             <div class="row">
                               <div class="col-md-6">
-                                {!! Form::hidden('user_id', Auth::user()->id) !!}
+                                {{ html()->hidden('user_id', Auth::user()->id) }}
                                 <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
-                                  {!! Form::label('title', 'Title') !!}
-                                  {!! Form::text('title', null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'Enter Blog Title']) !!}
+                                  {{ html()->label('Title', 'title') }}
+                                  {{ html()->text('title')->class('form-control')->required()->placeholder('Enter Blog Title') }}
                                   <small class="text-danger">{{ $errors->first('title') }}</small>
                                 </div>
                                 <div class="form-group{{ $errors->has('date') ? ' has-error' : '' }}">
-                                    {!! Form::label('date', 'Date') !!}
-                                    {!! Form::date('date', null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'Enter Date']) !!}
+                                    {{ html()->label('Date', 'date') }}
+                                    {{ html()->date('date')->class('form-control')->attribute('required', 'required')->attribute('placeholder', 'Enter Date') }}
                                     <small class="text-danger">{{ $errors->first('date') }}</small>
                                 </div>
                                 <div class="form-group{{ $errors->has('img') ? ' has-error' : '' }}">
-                                  {!! Form::label('img', 'Image') !!}
-                                  {!! Form::file('img') !!}
+                                  {{ html()->label('Image', 'img') }}
+                                  {{ html()->file('img') }}
                                   <p class="help-block">Help block text</p>
                                   <small class="text-danger">{{ $errors->first('img') }}</small>
                                 </div>
                               </div>
                               <div class="col-md-6">
                                 <div class="form-group{{ $errors->has('dtl') ? ' has-error' : '' }}">
-                                  {!! Form::label('dtl', 'Detail') !!}
-                                  {!! Form::textarea('dtl', null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'Enter Details']) !!}
+                                  {{ html()->label('Detail', 'dtl') }}
+                                  {{ html()->textarea('dtl')->class('form-control')->required()->placeholder('Enter Details') }}
                                   <small class="text-danger">{{ $errors->first('dtl') }}</small>
                                 </div>
                               </div>
@@ -153,10 +153,10 @@
                           </div>
                           <div class="modal-footer">
                             <div class="btn-group pull-right">
-                              {!! Form::submit("Update", ['class' => 'btn btn-default btn-add']) !!}
+                              {{ html()->submit("Update")->class('btn btn-default btn-add') }}
                             </div>
                           </div>
-                        {!! Form::close() !!}
+                        {{ html()->closeModelForm() }}
                       </div>
                     </div>
                   </div>
@@ -176,10 +176,10 @@
                           <p>Do you really want to delete these records? This process cannot be undone.</p>
                         </div>
                         <div class="modal-footer">
-                          {!! Form::open(['method' => 'DELETE', 'action' => ['AdminBlogController@destroy', $blog->id]]) !!}
-                              {!! Form::reset("No", ['class' => 'btn btn-gray', 'data-dismiss' => 'modal']) !!}
-                              {!! Form::submit("Yes", ['class' => 'btn btn-danger']) !!}
-                          {!! Form::close() !!}
+                          {{ html()->form('DELETE', action('AdminBlogController@destroy', [$blog->id]))->open() }}
+                              {{ html()->reset("No", ['class' => 'btn btn-gray', 'data-dismiss' => 'modal']) }}
+                              {{ html()->submit("Yes")->class('btn btn-danger') }}
+                          {{ html()->form()->close() }}
                         </div>
                       </div>
                     </div>

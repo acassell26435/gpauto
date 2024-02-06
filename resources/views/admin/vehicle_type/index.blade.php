@@ -36,28 +36,28 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Create Vehicle Type</h4>
         </div>
-        {!! Form::open(['method' => 'POST', 'action' => 'AdminVehicleTypeController@store']) !!}
+        {{ html()->form('POST', action('AdminVehicleTypeController@store'))->open() }}
           <div class="modal-body">
             <div class="row">
               <div class="form-group{{ $errors->has('icon') ? ' has-error' : '' }} col-md-6">
-                {!! Form::label('icon', 'Icon Code') !!}
-                {!! Form::text('icon', null, ['class' => 'form-control iconpicker-custom', 'placeholder'=>'Choose Icon']) !!}
+                {{ html()->label('Icon Code', 'icon') }}
+                {{ html()->text('icon')->class('form-control iconpicker-custom')->placeholder('Choose Icon') }}
                 <small class="text-danger">{{ $errors->first('icon') }}</small>
               </div>
               <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }} col-md-6">
-                {!! Form::label('type', 'Vehicle Type') !!}
-                {!! Form::text('type', null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'Vehicle Type']) !!}
+                {{ html()->label('Vehicle Type', 'type') }}
+                {{ html()->text('type')->class('form-control')->required()->placeholder('Vehicle Type') }}
                 <small class="text-danger">{{ $errors->first('type') }}</small>
               </div>
             </div>
           </div>
           <div class="modal-footer">
             <div class="btn-group pull-right">
-              {!! Form::reset("Reset", ['class' => 'btn btn-yellow btn-default']) !!}
-              {!! Form::submit("Add Type", ['class' => 'btn btn-default btn-add']) !!}
+              {{ html()->reset("Reset", ['class' => 'btn btn-yellow btn-default']) }}
+              {{ html()->submit("Add Type")->class('btn btn-default btn-add') }}
             </div>
           </div>
-        {!! Form::close() !!}
+        {{ html()->form()->close() }}
       </div>
     </div>
   </div>
@@ -97,20 +97,20 @@
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Edit Vehicle Type</h4>
                       </div>
-                      {!! Form::model($vehicle_type, ['method' => 'PATCH', 'action' => ['AdminVehicleTypeController@update', $vehicle_type->id]]) !!}
+                      {{ html()->modelForm($vehicle_type, 'PATCH', action('AdminVehicleTypeController@update', [$vehicle_type->id]))->open() }}
                         <div class="modal-body">
                           <div class="row">
                             <div class="col-md-6">
                               <div class="form-group{{ $errors->has('icon') ? ' has-error' : '' }}">
-                                {!! Form::label('icon', 'Icon Code') !!}
-                                {!! Form::text('icon', null, ['class' => 'form-control iconpicker-custom', 'required' => 'required']) !!}
+                                {{ html()->label('Icon Code', 'icon') }}
+                                {{ html()->text('icon')->class('form-control iconpicker-custom')->required() }}
                                 <small class="text-danger">{{ $errors->first('icon') }}</small>
                               </div>
                             </div>
                             <div class="col-md-6">
                               <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
-                                {!! Form::label('type', 'Vehicle Type') !!}
-                                {!! Form::text('type', null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'Vehicle Type']) !!}
+                                {{ html()->label('Vehicle Type', 'type') }}
+                                {{ html()->text('type')->class('form-control')->required()->placeholder('Vehicle Type') }}
                                 <small class="text-danger">{{ $errors->first('type') }}</small>
                               </div>
                             </div>
@@ -118,10 +118,10 @@
                         </div>
                         <div class="modal-footer">
                           <div class="btn-group pull-right">
-                            {!! Form::submit("Update", ['class' => 'btn btn-default btn-add']) !!}
+                            {{ html()->submit("Update")->class('btn btn-default btn-add') }}
                           </div>
                         </div>
-                      {!! Form::close() !!}
+                      {{ html()->closeModelForm() }}
                     </div>
                   </div>
                 </div>
@@ -141,10 +141,10 @@
                         <p>Do you really want to delete these records? This process cannot be undone.</p>
                       </div>
                       <div class="modal-footer">
-                        {!! Form::open(['method' => 'DELETE', 'action' => ['AdminVehicleTypeController@destroy', $vehicle_type->id]]) !!}
-                            {!! Form::reset("No", ['class' => 'btn btn-gray', 'data-dismiss' => 'modal']) !!}
-                            {!! Form::submit("Yes", ['class' => 'btn btn-danger']) !!}
-                        {!! Form::close() !!}
+                        {{ html()->form('DELETE', action('AdminVehicleTypeController@destroy', [$vehicle_type->id]))->open() }}
+                            {{ html()->reset("No", ['class' => 'btn btn-gray', 'data-dismiss' => 'modal']) }}
+                            {{ html()->submit("Yes")->class('btn btn-danger') }}
+                        {{ html()->form()->close() }}
                       </div>
                     </div>
                   </div>

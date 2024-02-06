@@ -36,121 +36,121 @@
       <div class="row">
         <div class="col-md-6">
            <div class="col-xs-7">
-            {!! Form::label('slider_section', 'Slider Section') !!}
+            {{ html()->label('Slider Section', 'slider_section') }}
           </div>
           <div class="col-xs-5 pad-0">
             <label class="switch">  
-              {!! Form::checkbox('slider_section', 1,$homesection->slider_section ? $homesection->slider_section : null, ['class' => 'checkbox-switch']) !!}
+              {{ html()->checkbox('slider_section', $homesection->slider_section ? $homesection->slider_section : null, 1)->class('checkbox-switch') }}
               <span class="slider round"></span>
             </label>
           </div>
         </div>
         <div class="col-md-6">
            <div class="col-xs-7">
-            {!! Form::label('about_section', 'About Section') !!}
+            {{ html()->label('About Section', 'about_section') }}
           </div>
           <div class="col-xs-5 pad-0">
             <label class="switch">                
-              {!! Form::checkbox('about_section', 1, $homesection->about_section ? $homesection->about_section : null, ['class' => 'checkbox-switch']) !!}
+              {{ html()->checkbox('about_section', $homesection->about_section ? $homesection->about_section : null, 1)->class('checkbox-switch') }}
               <span class="slider round"></span>
             </label>
           </div>
         </div>
         <div class="col-md-6">
           <div class="col-xs-7">
-            {!! Form::label('service_section', 'Our Service Section') !!}
+            {{ html()->label('Our Service Section', 'service_section') }}
           </div>
           <div class="col-xs-5 pad-0">
             <label class="switch">                
-              {!! Form::checkbox('service_section', 1, $homesection->service_section ? $homesection->service_section : null, ['class' => 'checkbox-switch']) !!}
+              {{ html()->checkbox('service_section', $homesection->service_section ? $homesection->service_section : null, 1)->class('checkbox-switch') }}
               <span class="slider round"></span>
             </label>
           </div>
         </div>
         <div class="col-md-6">
           <div class="col-xs-7">
-            {!! Form::label('gallery_section', 'Gallery Section') !!}
+            {{ html()->label('Gallery Section', 'gallery_section') }}
           </div>
           <div class="col-xs-5 pad-0">
             <label class="switch">                
-              {!! Form::checkbox('gallery_section', 1, $homesection->gallery_section ? $homesection->gallery_section : null, ['class' => 'checkbox-switch']) !!}
+              {{ html()->checkbox('gallery_section', $homesection->gallery_section ? $homesection->gallery_section : null, 1)->class('checkbox-switch') }}
               <span class="slider round"></span>
             </label>
           </div>
         </div>
          <div class="col-md-6">
           <div class="col-xs-7">
-            {!! Form::label('facts_section', 'Fact Section') !!}
+            {{ html()->label('Fact Section', 'facts_section') }}
           </div>
           <div class="col-xs-5 pad-0">
             <label class="switch">                
-              {!! Form::checkbox('facts_section', 1, $homesection->facts_section ? $homesection->facts_section : null, ['class' => 'checkbox-switch']) !!}
+              {{ html()->checkbox('facts_section', $homesection->facts_section ? $homesection->facts_section : null, 1)->class('checkbox-switch') }}
               <span class="slider round"></span>
             </label>
           </div>
         </div>
         <div class="col-md-6">
           <div class="col-xs-7">
-            {!! Form::label('team_section', 'Team Section') !!}
+            {{ html()->label('Team Section', 'team_section') }}
           </div>
           <div class="col-xs-5 pad-0">
             <label class="switch">                
-              {!! Form::checkbox('team_section', 1, $homesection->team_section ? $homesection->team_section : null, ['class' => 'checkbox-switch']) !!}
+              {{ html()->checkbox('team_section', $homesection->team_section ? $homesection->team_section : null, 1)->class('checkbox-switch') }}
               <span class="slider round"></span>
             </label>
           </div>
         </div>
         <div class="col-md-6">
           <div class="col-xs-7">
-            {!! Form::label('plan_section', 'Plan Section') !!}
+            {{ html()->label('Plan Section', 'plan_section') }}
           </div>
           <div class="col-xs-5 pad-0">
             <label class="switch">                
-              {!! Form::checkbox('plan_section', 1, $homesection->plan_section ? $homesection->plan_section : null, ['class' => 'checkbox-switch']) !!}
+              {{ html()->checkbox('plan_section', $homesection->plan_section ? $homesection->plan_section : null, 1)->class('checkbox-switch') }}
               <span class="slider round"></span>
             </label>
           </div>
         </div>
         <div class="col-md-6">
           <div class="col-xs-7">
-            {!! Form::label('appointment_section', 'Appointment Section') !!}
+            {{ html()->label('Appointment Section', 'appointment_section') }}
           </div>
           <div class="col-xs-5 pad-0">
             <label class="switch">                
-              {!! Form::checkbox('appointment_section', 1, $homesection->appointment_section ? $homesection->appointment_section : null, ['class' => 'checkbox-switch']) !!}
+              {{ html()->checkbox('appointment_section', $homesection->appointment_section ? $homesection->appointment_section : null, 1)->class('checkbox-switch') }}
               <span class="slider round"></span>
             </label>
           </div>
         </div>
         <div class="col-md-6">
           <div class="col-xs-7">
-            {!! Form::label('testinomial_section', 'Testinomial Section') !!}
+            {{ html()->label('Testinomial Section', 'testinomial_section') }}
           </div>
           <div class="col-xs-5 pad-0">
             <label class="switch">                
-              {!! Form::checkbox('testinomial_section', 1, $homesection->testinomial_section ? $homesection->testinomial_section : null, ['class' => 'checkbox-switch']) !!}
+              {{ html()->checkbox('testinomial_section', $homesection->testinomial_section ? $homesection->testinomial_section : null, 1)->class('checkbox-switch') }}
               <span class="slider round"></span>
             </label>
           </div>
         </div>
         <div class="col-md-6">
           <div class="col-xs-7">
-            {!! Form::label('blog_section', 'News / Blog Section') !!}
+            {{ html()->label('News / Blog Section', 'blog_section') }}
           </div>
           <div class="col-xs-5 pad-0">
             <label class="switch">                
-              {!! Form::checkbox('blog_section', 1, $homesection->blog_section ? $homesection->blog_section : null, ['class' => 'checkbox-switch']) !!}
+              {{ html()->checkbox('blog_section', $homesection->blog_section ? $homesection->blog_section : null, 1)->class('checkbox-switch') }}
               <span class="slider round"></span>
             </label>
           </div>
         </div>
         <div class="col-md-6">
           <div class="col-xs-7">
-            {!! Form::label('client_section', 'Client Section') !!}
+            {{ html()->label('Client Section', 'client_section') }}
           </div>
           <div class="col-xs-5 pad-0">
             <label class="switch">                
-              {!! Form::checkbox('client_section', 1, $homesection->client_section ? $homesection->client_section : null, ['class' => 'checkbox-switch']) !!}
+              {{ html()->checkbox('client_section', $homesection->client_section ? $homesection->client_section : null, 1)->class('checkbox-switch') }}
               <span class="slider round"></span>
             </label>
           </div>
