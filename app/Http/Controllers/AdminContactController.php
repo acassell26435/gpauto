@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Contact;
+use App\Models\Contact;
 use DotenvEditor;
 use Illuminate\Http\Request;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,11 +15,11 @@ class Washing_price extends Model
 
     public function washing_plan()
     {
-        return $this->belongsTo(\App\Washing_plan::class);
+        return $this->belongsTo(\App\Models\Washing_plan::class);
     }
 
     public function vehicle_type()
     {
-        return $this->belongsTo(\App\Vehicle_type::class);
+        return $this->belongsTo(\App\Models\Vehicle_type::class);
     }
 }

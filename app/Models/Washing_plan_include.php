@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,6 +14,6 @@ class Washing_plan_include extends Model
 
     public function washing_plan()
     {
-        return $this->belongsTo(\App\Washing_plan::class);
+        return $this->belongsTo(\App\Models\Washing_plan::class);
     }
 }

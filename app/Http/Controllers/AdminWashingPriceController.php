@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Vehicle_type;
-use App\Washing_plan;
-use App\Washing_price;
+use App\Models\Vehicle_type;
+use App\Models\Washing_plan;
+use App\Models\Washing_price;
 use Illuminate\Http\Request;
 
 class AdminWashingPriceController extends Controller

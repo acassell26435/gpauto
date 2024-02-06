@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\SocialLogin;
+use App\Models\SocialLogin;
 use DotenvEditor;
 use Illuminate\Http\Request;
 

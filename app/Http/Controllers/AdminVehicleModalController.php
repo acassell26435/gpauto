@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Vehicle_company;
-use App\Vehicle_modal;
+use App\Models\Vehicle_company;
+use App\Models\Vehicle_modal;
 use Illuminate\Http\Request;
 
 class AdminVehicleModalController extends Controller

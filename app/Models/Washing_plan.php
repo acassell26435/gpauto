@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,16 +13,16 @@ class Washing_plan extends Model
 
     public function washing_include()
     {
-        return $this->hasOne(\App\Washing_plan_include::class);
+        return $this->hasOne(\App\Models\Washing_plan_include::class);
     }
 
     public function washing_price()
     {
-        return $this->hasOne(\App\Washing_price::class);
+        return $this->hasOne(\App\Models\Washing_price::class);
     }
 
     public function appointment()
     {
-        return $this->hasOne(\App\Appointment::class);
+        return $this->hasOne(\App\Models\Appointment::class);
     }
 }

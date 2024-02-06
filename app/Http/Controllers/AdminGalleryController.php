@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Gallery;
+use App\Models\Gallery;
 use Illuminate\Http\Request;
 
 class AdminGalleryController extends Controller

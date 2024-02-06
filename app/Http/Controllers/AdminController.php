@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Appointment;
-use App\Blog;
-use App\Service;
-use App\Team;
-use App\Team_task;
-use App\Testimonial;
-use App\User;
-use App\Washing_plan;
+use App\Models\Appointment;
+use App\Models\Blog;
+use App\Models\Service;
+use App\Models\Team;
+use App\Models\Team_task;
+use App\Models\Testimonial;
+use App\Models\User;
+use App\Models\Washing_plan;
 
 class AdminController extends Controller
 {

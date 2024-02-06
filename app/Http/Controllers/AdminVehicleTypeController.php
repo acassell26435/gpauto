@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Vehicle_type;
+use App\Models\Vehicle_type;
 use Illuminate\Http\Request;
 
 class AdminVehicleTypeController extends Controller

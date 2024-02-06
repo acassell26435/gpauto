@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Company_social;
+use App\Models\Company_social;
 use Illuminate\Http\Request;
 
 class AdminCompanySocialController extends Controller

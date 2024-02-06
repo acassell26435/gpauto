@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,6 +12,6 @@ class Payment_mode extends Model
 
     public function appointment_user()
     {
-        return $this->hasOne(\App\Appointment_user::class);
+        return $this->hasOne(\App\Models\Appointment_user::class);
     }
 }

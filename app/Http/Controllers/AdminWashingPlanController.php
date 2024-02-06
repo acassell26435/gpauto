@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Washing_plan;
-use App\Washing_plan_include;
+use App\Models\Washing_plan;
+use App\Models\Washing_plan_include;
 use Illuminate\Http\Request;
 
 class AdminWashingPlanController extends Controller

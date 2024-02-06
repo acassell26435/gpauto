@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TeamCreateRequest;
 use App\Http\Requests\TeamUpdateRequest;
-use App\Social_team;
-use App\Team;
+use App\Models\Social_team;
+use App\Models\Team;
 use Illuminate\Support\Facades\Session;
 
 class AdminTeamController extends Controller

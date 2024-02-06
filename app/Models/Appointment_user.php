@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -17,16 +17,16 @@ class Appointment_user extends Model
 
     public function user()
     {
-        return $this->belongsTo(\App\User::class);
+        return $this->belongsTo(\App\Models\User::class);
     }
 
     public function appointment()
     {
-        return $this->belongsTo(\App\Appointment::class);
+        return $this->belongsTo(\App\Models\Appointment::class);
     }
 
     public function payment_mode()
     {
-        return $this->belongsTo(\App\Payment_mode::class);
+        return $this->belongsTo(\App\Models\Payment_mode::class);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Payment_mode;
+use App\Models\Payment_mode;
 use Illuminate\Http\Request;
 
 class AdminPaymentModeController extends Controller
