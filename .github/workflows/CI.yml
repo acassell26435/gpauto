@@ -21,6 +21,7 @@ jobs:
       matrix:
         operating-system: ['ubuntu-latest']
         php-versions: ['8.1', '8.2', '8.3']
+        node: [ 14, 16, 18 ]
         phpunit-versions: ['latest']
         include:
           - operating-system: 'ubuntu-latest'
@@ -37,3 +38,28 @@ jobs:
         tools: php-cs-fixer, phpunit:${{ matrix.phpunit-versions }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+        
+    - name: Get composer cache directory
+      id: composer-cache
+      run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+    
+    - name: Cache dependencies
+      uses: actions/cache@v3
+      with:
+        path: ${{ steps.composer-cache.outputs.dir }}
+        key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+        restore-keys: ${{ runner.os }}-composer-
+    - name: Install dependencies
+      run: composer update
+
+    - name: Node ${{ matrix.node }} sample
+        steps:
+          - uses: actions/checkout@v4
+          - name: Setup node
+            uses: actions/setup-node@v4
+            with:
+              node-version: ${{ matrix.node }}
+          - run: npm ci
+          - run: npm test
+ 
+
