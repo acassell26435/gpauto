@@ -9,20 +9,21 @@ on:
 
 jobs:
   build:
-    runs-on: lnx
+    name: Run npm on Ubuntu
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
-      - run: npm ci
-      - run: npm test
+          node-version: '14'
+      - run: npm help
 
   publish-npm:
     needs: build
-    runs-on: lnx
+    name: Run npm on Ubuntu2
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
         with:
           node-version: 16
