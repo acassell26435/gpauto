@@ -1,5 +1,39 @@
 <?php
 
+use App\Http\Controllers\AdminBlogController;
+use App\Http\Controllers\AdminClientsController;
+use App\Http\Controllers\AdminCompanySocialController;
+use App\Http\Controllers\AdminFactsController;
+use App\Http\Controllers\AdminGalleryController;
+use App\Http\Controllers\AdminOpeningHoursController;
+use App\Http\Controllers\AdminPaymentController;
+use App\Http\Controllers\AdminPaymentModeController;
+use App\Http\Controllers\AdminServiceController;
+use App\Http\Controllers\AdminTaskStatusController;
+use App\Http\Controllers\AdminTeamController;
+use App\Http\Controllers\AdminTeamSocialController;
+use App\Http\Controllers\AdminTeamTaskController;
+use App\Http\Controllers\AdminTestimonialController;
+use App\Http\Controllers\AdminUsersController;
+use App\Http\Controllers\AdminVehicleCompController;
+use App\Http\Controllers\AdminVehicleModalController;
+use App\Http\Controllers\AdminVehicleTypeController;
+use App\Http\Controllers\AdminWashingIncludeController;
+use App\Http\Controllers\AdminWashingPlanController;
+use App\Http\Controllers\AdminWashingPriceController;
+use App\Http\Controllers\HomeSliderController;
+use App\Http\Controllers\AdminAppointmentController;
+use App\Http\Controllers\AdminContactController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Auth;
+use App\Http\Controllers\HelpController;
+use App\Http\Controllers\HomePageController;
+use App\Http\Controllers\HomeSectionController;
+use App\Http\Controllers\MailChimpController;
+use App\Http\Controllers\PWAController;
+use App\Http\Controllers\SocialLoginController;
+use App\Http\Controllers\contactMailController;
+use Illuminate\Support\Facades\Route;
 use App\Company_social;
 use App\Contact;
 use App\Gallery;
@@ -23,7 +57,7 @@ use App\Washing_price;
 |
 */
 
-Route::resource('/', 'HomePageController');
+Route::resource('/', HomePageController::class);
 
 Auth::routes();
 
@@ -31,17 +65,17 @@ Route::get('/home', function () {
     return Redirect('/');
 });
 
-Route::get('login', 'Auth\LoginController@getLogin')->name('login');
-Route::get('register', 'Auth\RegisterController@getRegister')->name('register');
-Route::get('password/reset', 'Auth\ForgotPasswordController@showResetPassword')->name('password.reset');
-Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.request');
-Route::get('password/reset{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset.token');
+Route::get('login', [Auth\LoginController::class, 'getLogin'])->name('login');
+Route::get('register', [Auth\RegisterController::class, 'getRegister'])->name('register');
+Route::get('password/reset', [Auth\ForgotPasswordController::class, 'showResetPassword'])->name('password.reset');
+Route::post('password/reset', [Auth\ResetPasswordController::class, 'reset'])->name('password.request');
+Route::get('password/reset{token}', [Auth\ResetPasswordController::class, 'showResetForm'])->name('password.reset.token');
 
-Route::post('subscribe', 'MailChimpController@subscribe');
-Route::post('subscribe', 'HomePageController@mailError');
+Route::post('subscribe', [MailChimpController::class, 'subscribe']);
+Route::post('subscribe', [HomePageController::class, 'mailError']);
 
-Route::get('/contact', 'contactMailController@index');
-Route::post('/contact', 'contactMailController@send');
+Route::get('/contact', [contactMailController::class, 'index']);
+Route::post('/contact', [contactMailController::class, 'send']);
 
 Route::get('/404', function () {
     $company_socials = Company_social::all();
@@ -124,110 +158,110 @@ Route::get('/team', function () {
 
 Route::middleware('iscommon')->group(function () {
 
-    Route::get('/admin', 'AdminController@index');
+    Route::get('/admin', [AdminController::class, 'index']);
 
     Route::get('/admin/profile', function () {
         return view('profile');
     });
 
-    Route::resource('/admin/users', 'AdminUsersController');
+    Route::resource('/admin/users', AdminUsersController::class);
 
-    Route::resource('admin/appointment', 'AdminAppointmentController');
+    Route::resource('admin/appointment', AdminAppointmentController::class);
 
 });
-Route::get('admin/downloadPDF', 'AdminAppointmentController@downloadPDF');
+Route::get('admin/downloadPDF', [AdminAppointmentController::class, 'downloadPDF']);
 
 Route::middleware('isadmin')->group(function () {
 
-    Route::resource('/admin/team', 'AdminTeamController');
+    Route::resource('/admin/team', AdminTeamController::class);
 
-    Route::resource('/admin/team_social', 'AdminTeamSocialController');
+    Route::resource('/admin/team_social', AdminTeamSocialController::class);
 
-    Route::resource('admin/services', 'AdminServiceController');
+    Route::resource('admin/services', AdminServiceController::class);
 
-    Route::resource('admin/gallery', 'AdminGalleryController');
+    Route::resource('admin/gallery', AdminGalleryController::class);
 
-    Route::resource('admin/testimonial', 'AdminTestimonialController');
+    Route::resource('admin/testimonial', AdminTestimonialController::class);
 
-    Route::resource('admin/washing_plan', 'AdminWashingPlanController');
+    Route::resource('admin/washing_plan', AdminWashingPlanController::class);
 
-    Route::resource('admin/washing_include', 'AdminWashingIncludeController');
+    Route::resource('admin/washing_include', AdminWashingIncludeController::class);
 
-    Route::resource('admin/vehicle_type', 'AdminVehicleTypeController');
+    Route::resource('admin/vehicle_type', AdminVehicleTypeController::class);
 
-    Route::resource('admin/washing_price', 'AdminWashingPriceController');
+    Route::resource('admin/washing_price', AdminWashingPriceController::class);
 
-    Route::resource('admin/status', 'AdminTaskStatusController');
+    Route::resource('admin/status', AdminTaskStatusController::class);
 
-    Route::resource('admin/team_task', 'AdminTeamTaskController');
+    Route::resource('admin/team_task', AdminTeamTaskController::class);
 
-    Route::resource('admin/facts', 'AdminFactsController');
+    Route::resource('admin/facts', AdminFactsController::class);
 
-    Route::resource('admin/blog', 'AdminBlogController');
+    Route::resource('admin/blog', AdminBlogController::class);
 
-    Route::resource('admin/clients', 'AdminClientsController');
+    Route::resource('admin/clients', AdminClientsController::class);
 
-    Route::resource('admin/opening_hours', 'AdminOpeningHoursController');
+    Route::resource('admin/opening_hours', AdminOpeningHoursController::class);
 
-    Route::resource('admin/company_social', 'AdminCompanySocialController');
+    Route::resource('admin/company_social', AdminCompanySocialController::class);
 
-    Route::resource('admin/payment_mode', 'AdminPaymentModeController');
+    Route::resource('admin/payment_mode', AdminPaymentModeController::class);
 
-    Route::resource('admin/vehicle_company', 'AdminVehicleCompController');
+    Route::resource('admin/vehicle_company', AdminVehicleCompController::class);
 
-    Route::resource('admin/vehicle_modal', 'AdminVehicleModalController');
+    Route::resource('admin/vehicle_modal', AdminVehicleModalController::class);
 
-    Route::resource('admin/payments', 'AdminPaymentController');
+    Route::resource('admin/payments', AdminPaymentController::class);
 
-    Route::resource('admin/contact', 'AdminContactController');
+    Route::resource('admin/contact', AdminContactController::class);
 
-    Route::post('admin/contact/{id}', 'AdminContactController@update')->name('contact.update');
+    Route::post('admin/contact/{id}', [AdminContactController::class, 'update'])->name('contact.update');
 
-    Route::resource('admin/payment', 'AdminPaymentController');
+    Route::resource('admin/payment', AdminPaymentController::class);
 
-    Route::get('admin/mail-settings', 'AdminContactController@mail_setting')->name('get.mailsetting');
-    Route::post('admin/mail-settings', 'AdminContactController@store_mail_setting')->name('store.mailsetting');
+    Route::get('admin/mail-settings', [AdminContactController::class, 'mail_setting'])->name('get.mailsetting');
+    Route::post('admin/mail-settings', [AdminContactController::class, 'store_mail_setting'])->name('store.mailsetting');
 
-    Route::get('admin/mailchimp-settings', 'AdminContactController@mailchimp_setting')->name('get.othersetting');
-    Route::post('admin/mailchimp-settings', 'AdminContactController@store_mailchimp_setting')->name('store.mailchimpsetting');
+    Route::get('admin/mailchimp-settings', [AdminContactController::class, 'mailchimp_setting'])->name('get.othersetting');
+    Route::post('admin/mailchimp-settings', [AdminContactController::class, 'store_mailchimp_setting'])->name('store.mailchimpsetting');
 
-    Route::resource('admin/slider', 'HomeSliderController');
+    Route::resource('admin/slider', HomeSliderController::class);
 
-    Route::get('/admin/report', 'AdminAppointmentController@report')->name('booking.report');
+    Route::get('/admin/report', [AdminAppointmentController::class, 'report'])->name('booking.report');
 
-    Route::get('/admin/report/index', 'AdminAppointmentController@ajaxonLoad')->name('ajaxreport');
+    Route::get('/admin/report/index', [AdminAppointmentController::class, 'ajaxonLoad'])->name('ajaxreport');
 
-    Route::get('/pwa-settings', 'PWAController@index')->name('pwa.setting.index');
+    Route::get('/pwa-settings', [PWAController::class, 'index'])->name('pwa.setting.index');
 
-    Route::post('/pwa/update/setting', 'PWAController@updatesetting')->name('pwa.setting.update');
+    Route::post('/pwa/update/setting', [PWAController::class, 'updatesetting'])->name('pwa.setting.update');
 
-    Route::post('/pwa/update/icons/setting', 'PWAController@updateicons')->name('pwa.icons.update');
+    Route::post('/pwa/update/icons/setting', [PWAController::class, 'updateicons'])->name('pwa.icons.update');
 
     /*Social Login setting routes*/
-    Route::get('/admin/social-login/', 'SocialLoginController@index')->name('social.login');
-    Route::put('/admin/social-login/{id}', 'SocialLoginController@updatePage')->name('sociallogin.update');
-    Route::get('admin/social-login/set', 'SocialLoginController@facebook')->name('set.facebook');
-    Route::post('admin/facebook', 'SocialLoginController@updateFacebookKey')->name('key.facebook');
-    Route::post('admin/google', 'SocialLoginController@updateGoogleKey')->name('key.google');
+    Route::get('/admin/social-login/', [SocialLoginController::class, 'index'])->name('social.login');
+    Route::put('/admin/social-login/{id}', [SocialLoginController::class, 'updatePage'])->name('sociallogin.update');
+    Route::get('admin/social-login/set', [SocialLoginController::class, 'facebook'])->name('set.facebook');
+    Route::post('admin/facebook', [SocialLoginController::class, 'updateFacebookKey'])->name('key.facebook');
+    Route::post('admin/google', [SocialLoginController::class, 'updateGoogleKey'])->name('key.google');
 
     /* HOme section */
-    Route::get('/admin/home-setting', 'HomeSectionController@index')->name('home.section');
-    Route::post('/admin/home-setting', 'HomeSectionController@store')->name('home.section.store');
+    Route::get('/admin/home-setting', [HomeSectionController::class, 'index'])->name('home.section');
+    Route::post('/admin/home-setting', [HomeSectionController::class, 'store'])->name('home.section.store');
 
     //help routes
 
     //clear cache
-    Route::get('admin/clear-cache', 'HelpController@clearcahe')->name('clear.cache');
+    Route::get('admin/clear-cache', [HelpController::class, 'clearcahe'])->name('clear.cache');
 
     // System Status
-    Route::get('admin/system-status', 'HelpController@system_status')->name('system.status');
+    Route::get('admin/system-status', [HelpController::class, 'system_status'])->name('system.status');
 
     // remove public
-    Route::get('admin/remove/public', 'HelpController@getremove_public')->name('get.remove.public');
-    Route::post('admin/remove-public', 'HelpController@remove_public')->name('remove.public');
+    Route::get('admin/remove/public', [HelpController::class, 'getremove_public'])->name('get.remove.public');
+    Route::post('admin/remove-public', [HelpController::class, 'remove_public'])->name('remove.public');
 
 });
 
 // OAuth Routes
-Route::get('auth/{provider}', 'Auth\AuthController@redirectToProvider');
-Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallback');
+Route::get('auth/{provider}', [Auth\AuthController::class, 'redirectToProvider']);
+Route::get('auth/{provider}/callback', [Auth\AuthController::class, 'handleProviderCallback']);
