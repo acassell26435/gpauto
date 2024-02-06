@@ -27,8 +27,6 @@ class HomeSliderController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function create(): View
     {
@@ -101,7 +99,6 @@ class HomeSliderController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\HomeSlider  $homeSlider
-     * @return \Illuminate\Http\Response
      */
     public function edit($id): View
     {
