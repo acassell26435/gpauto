@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Blog extends Model
 {
-    protected $dates = ['date'];
+    protected $casts = [
+        'date' => 'datetime',
+    ];
 
     protected $fillable = [
         'title',
